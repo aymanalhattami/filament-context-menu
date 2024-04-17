@@ -33,7 +33,7 @@ class ContentMenu
     }
 
     /**
-     * @param array<ContentMenuItem> $items
+     * @param  array<ContentMenuItem>  $items
      */
     public function items(array $items): static
     {
