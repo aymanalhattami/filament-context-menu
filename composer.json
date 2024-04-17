@@ -1,29 +1,27 @@
 {
-    "name": ":vendor_slug/:package_slug",
+    "name": "aymanalhattami/filament-context-menu",
     "description": ":package_description",
     "keywords": [
-        ":vendor_name",
+        "ayman alhattami",
         "laravel",
-        ":package_slug"
+        "filament_context_menu"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/aymanalhattami/filament-context-menu",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/aymanalhattami/filament-context-menu/issues",
+        "source": "https://github.com/aymanalhattami/filament-context-menu"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ayman Alhattami",
+            "email": "ayman.m.alhattami@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.1",
-        "filament/filament": "^3.0",
-        "filament/forms": "^3.0",
-        "filament/tables": "^3.0",
+        "php": "^8.2",
+        "filament/support": "^3.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -41,13 +39,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "AymanAlhattami\\FilamentContextMenu\\": "src/",
+            "AymanAlhattami\\FilamentContextMenu\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "AymanAlhattami\\FilamentContextMenu\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -67,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "AymanAlhattami\\FilamentContextMenu\\FilamentContextMenuServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Skeleton": "AymanAlhattami\\FilamentContextMenu\\Facades\\FilamentContextMenu"
             }
         }
     },
