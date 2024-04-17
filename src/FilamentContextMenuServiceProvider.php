@@ -7,6 +7,8 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Filesystem\Filesystem;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -23,50 +25,31 @@ class FilamentContextMenuServiceProvider extends PackageServiceProvider
         $package->name(static::$name)
             ->hasConfigFile()
             ->hasAssets()
+            ->hasViews()
             ->hasViewComponents(static::$viewNamespace);
     }
 
     public function packageBooted(): void
     {
-        // Asset Registration
         FilamentAsset::register(
             $this->getAssets(),
             $this->getAssetPackageName()
         );
 
-        FilamentAsset::registerScriptData(
-            $this->getScriptData(),
-            $this->getAssetPackageName()
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::PAGE_START,
+            fn () => view('filament-context-menu::components.context-menu'),
         );
-
-        // Icon Registration
-        FilamentIcon::register($this->getIcons());
-
-        // Handle Stubs
-        if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
-                $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
-            }
-        }
-
-        // Testing
-        Testable::mixin(new TestsSkeleton());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'aymanalhattami/filament-context-menu';
     }
 
-    /**
-     * @return array<Asset>
-     */
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
             Css::make('skeleton-styles', __DIR__ . '/../resources/dist/filament-context-menu.css'),
             Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/filament-context-menu.js'),
         ];

@@ -22,7 +22,7 @@ class ContentMenuItem
         return $this->title;
     }
 
-    public function title(?string $title): \App\Helper\ContentMenuItem
+    public function title(?string $title): static
     {
         $this->title = $title;
 
@@ -34,7 +34,7 @@ class ContentMenuItem
         return $this->url;
     }
 
-    public function url(?string $url): ContentMenuItem
+    public function url(?string $url): static
     {
         $this->url = $url;
 
@@ -46,7 +46,7 @@ class ContentMenuItem
         return $this->icon;
     }
 
-    public function icon(?string $icon): ContentMenuItem
+    public function icon(?string $icon): static
     {
         $this->icon = $icon;
 
@@ -58,7 +58,7 @@ class ContentMenuItem
         return $this->target;
     }
 
-    public function target(?string $target): ContentMenuItem
+    public function target(?string $target): static
     {
         $this->target = $target;
 
