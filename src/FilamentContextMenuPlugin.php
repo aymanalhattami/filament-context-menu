@@ -1,11 +1,11 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class FilamentContextMenuPlugin implements Plugin
 {
     public function getId(): string
     {

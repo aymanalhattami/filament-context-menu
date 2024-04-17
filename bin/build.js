@@ -45,6 +45,6 @@ const defaultOptions = {
 
 compile({
     ...defaultOptions,
-    entryPoints: ['./resources/js/index.js'],
+    entryPoints: ['./resources/js/filament-context-menu.js'],
     outfile: './resources/dist/skeleton.js',
 })

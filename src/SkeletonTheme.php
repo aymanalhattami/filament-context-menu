@@ -1,14 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Assets\Theme;
-use Filament\Support\Color;
+use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentAsset;
 
-class Skeleton implements Plugin
+class SkeletonTheme implements Plugin
 {
     public function getId(): string
     {
