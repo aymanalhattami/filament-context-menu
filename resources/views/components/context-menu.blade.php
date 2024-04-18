@@ -6,7 +6,7 @@
                     {{ $item }}
                 </span>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuItem)
-                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
+                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
                     <span class="flex gap-x-4">
                         @if(filled($item->getIcon()))
                             <span class="flex h-5 w-5 items-center justify-center">
