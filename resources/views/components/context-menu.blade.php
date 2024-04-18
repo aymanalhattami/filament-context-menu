@@ -9,18 +9,17 @@
                 <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
                     <span class="flex gap-x-4">
                         @if(filled($item->getIcon()))
-                            <span class="flex h-6 w-6 items-center justify-center">
-                            <x-filament::icon
-                                :icon="$item->getIcon()"
-                                class="h-6 w-6 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"
-                            />
-                        </span>
+                            <span class="flex h-5 w-5 items-center justify-center">
+                                <x-filament::icon
+                                    :icon="$item->getIcon()"
+                                    class="h-5 w-5 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"/>
+                            </span>
                         @else
-                            <span class="flex min-h-6 min-w-6 items-center justify-center">
+                            <span class="block min-h-6 min-w-6 items-center justify-center"></span>
                         @endif
                         <span>{{ $item->getTitle() }}</span>
                     </span>
-                        <span>
+                    <span>
                         <x-filament::badge>
                             New
                         </x-filament::badge>
