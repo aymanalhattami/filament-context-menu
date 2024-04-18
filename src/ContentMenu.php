@@ -12,7 +12,7 @@ class ContentMenu
 
     private string | null | Closure $title = null;
 
-    private Closure|bool $translateTitle = false;
+    private Closure | bool $translateTitle = false;
 
     private array | Closure $items = [];
 
@@ -23,21 +23,21 @@ class ContentMenu
 
     public function getTitle(): ?string
     {
-        if($this->isTitleTranslatable()) {
+        if ($this->isTitleTranslatable()) {
             return __($this->evaluate($this->title));
         }
 
         return $this->evaluate($this->title);
     }
 
-    public function title(string|Closure $title): static
+    public function title(string | Closure $title): static
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function translateTitle(bool|Closure $translateTitle = true): static
+    public function translateTitle(bool | Closure $translateTitle = true): static
     {
         $this->translateTitle = $translateTitle;
 
@@ -57,7 +57,7 @@ class ContentMenu
     /**
      * @param  array<ContentMenuItem|Action>  $items
      */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

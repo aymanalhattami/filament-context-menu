@@ -54,7 +54,7 @@ class ContentMenuItem
         return (bool) $this->evaluate($this->translateTitle);
     }
 
-    public function getUrl(): string|Action|null
+    public function getUrl(): string | Action | null
     {
         return $this->evaluate($this->url);
     }

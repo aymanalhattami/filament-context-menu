@@ -3,7 +3,6 @@
 namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
