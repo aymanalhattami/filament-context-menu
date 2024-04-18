@@ -46,8 +46,7 @@ class FilamentContextMenuServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/filament-context-menu.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/filament-context-menu.js'),
+            Css::make('filament-context-menu-styles', __DIR__ . '/../resources/dist/app.css'),
         ];
     }
 }
