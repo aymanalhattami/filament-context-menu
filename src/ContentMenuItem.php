@@ -4,14 +4,14 @@ namespace AymanAlhattami\FilamentContextMenu;
 
 class ContentMenuItem
 {
-    private Closure|string|null $title = null;
+    private Closure | string | null $title = null;
 
-    private Closure|string|null $url = null;
+    private Closure | string | null $url = null;
 
-    private Closure|string|null $icon = null;
+    private Closure | string | null $icon = null;
 
-    # _blank, _self, _parent, _top
-    private Closure|string $target = '_self';
+    // _blank, _self, _parent, _top
+    private Closure | string $target = '_self';
 
     public static function make(): static
     {
@@ -23,7 +23,7 @@ class ContentMenuItem
         return $this->title;
     }
 
-    public function title(Closure|string|null $title): static
+    public function title(Closure | string | null $title): static
     {
         $this->title = $title;
 
@@ -35,7 +35,7 @@ class ContentMenuItem
         return $this->url;
     }
 
-    public function url(Closure|string|null $url): static
+    public function url(Closure | string | null $url): static
     {
         $this->url = $url;
 
@@ -47,7 +47,7 @@ class ContentMenuItem
         return $this->icon;
     }
 
-    public function icon(Closure|string|null $icon): static
+    public function icon(Closure | string | null $icon): static
     {
         $this->icon = $icon;
 
@@ -59,7 +59,7 @@ class ContentMenuItem
         return $this->target;
     }
 
-    public function target(Closure|string|null $target): static
+    public function target(Closure | string | null $target): static
     {
         $this->target = $target;
 
