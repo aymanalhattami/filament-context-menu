@@ -11,6 +11,8 @@ class ContentMenuItem
 
     private Closure | string | null $title = null;
 
+    private Closure | bool $translateTitle = false;
+
     private Closure | string | null $url = null;
 
     private Closure | string | null $icon = null;
@@ -25,6 +27,10 @@ class ContentMenuItem
 
     public function getTitle(): ?string
     {
+        if($this->isTitleTranslatable()) {
+            return __($this->evaluate($this->title));
+        }
+
         return $this->evaluate($this->title);
     }
 
@@ -35,11 +41,16 @@ class ContentMenuItem
         return $this;
     }
 
-    public function translateTitle(): static
+    public function translateTitle(Closure | bool $tranlateTitle = true): static
     {
-        $this->title = __($this->getTitle());
+        $this->translateTitle = $tranlateTitle;
 
         return $this;
+    }
+
+    public function isTitleTranslatable(): bool
+    {
+        return (bool) $this->evaluate($this->translateTitle);
     }
 
     public function getUrl(): ?string
