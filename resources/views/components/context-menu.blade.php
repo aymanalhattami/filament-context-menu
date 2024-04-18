@@ -1,6 +1,11 @@
 @if(method_exists(static::class, 'getContextMenu'))
     <div id="contextMenu" class="z-50 min-w-[8rem] max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md w-64" style="display: none;">
         @foreach(static::getContextMenu()->getItems() as $item)
+            @if($item->getUrl() instanceof \Filament\Actions\Action)
+                <span class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
+                    {{ $item->getUrl() }}
+                </span>
+            @else
             <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
                 <span class="flex gap-x-4">
                     @if(filled($item->getIcon()))
@@ -19,6 +24,7 @@
                     </x-filament::badge>
                 </span>
             </a>
+            @endif
         @endforeach
     </div>
 

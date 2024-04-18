@@ -3,6 +3,7 @@
 namespace AymanAlhattami\FilamentContextMenu;
 
 use Closure;
+use Filament\Actions\Action;
 use Filament\Support\Concerns\EvaluatesClosures;
 
 class ContentMenuItem
@@ -13,7 +14,7 @@ class ContentMenuItem
 
     private Closure | bool $translateTitle = false;
 
-    private Closure | string | null $url = null;
+    private Closure | string | null | Action $url = null;
 
     private Closure | string | null $icon = null;
 
@@ -53,12 +54,12 @@ class ContentMenuItem
         return (bool) $this->evaluate($this->translateTitle);
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string|Action|null
     {
         return $this->evaluate($this->url);
     }
 
-    public function url(Closure | string | null $url): static
+    public function url(Closure | string | null | Action $url): static
     {
         $this->url = $url;
 

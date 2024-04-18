@@ -3,6 +3,7 @@
 namespace AymanAlhattami\FilamentContextMenu;
 
 use App\Helper\ContentMenuItem;
+use Filament\Actions\Action;
 
 class ContentMenu
 {
@@ -33,7 +34,7 @@ class ContentMenu
     }
 
     /**
-     * @param  array<ContentMenuItem>  $items
+     * @param  array<ContentMenuItem|Action>  $items
      */
     public function items(array $items): static
     {
