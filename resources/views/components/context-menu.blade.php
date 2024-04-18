@@ -1,12 +1,12 @@
 @if(method_exists(static::class, 'getContextMenu'))
-    <div id="contextMenu" class="z-50 min-w-48	 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-2 shadow-md" style="display: none;">
+    <div id="contextMenu" class="flex flex-col gap-y-1 z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-2 shadow-md dark:bg-gray-950 dark:text-white dark:border-black" style="display: none;">
         @foreach(static::getContextMenu()->getItems() as $item)
             @if($item instanceof \Filament\Actions\Action)
-                <span class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
+                <span class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-gray-100">
                     {{ $item }}
                 </span>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuItem)
-                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
+                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-gray-100">
                     <span class="flex gap-x-1">
                         @if(filled($item->getIcon()))
                             <span class="flex h-5 w-5 items-center justify-center">
@@ -19,7 +19,7 @@
                     </span>
                 </a>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
-                <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
+                <div class="h-px my-1 -mx-1 bg-neutral-200 dark:bg-gray-100"></div>
             @endif
         @endforeach
     </div>
