@@ -2,8 +2,13 @@
 
 namespace AymanAlhattami\FilamentContextMenu;
 
+use Closure;
+use Filament\Support\Concerns\EvaluatesClosures;
+
 class ContentMenuItem
 {
+    use EvaluatesClosures;
+
     private Closure | string | null $title = null;
 
     private Closure | string | null $url = null;
@@ -20,7 +25,7 @@ class ContentMenuItem
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        return $this->evaluate($this->title);
     }
 
     public function title(Closure | string | null $title): static
@@ -30,9 +35,16 @@ class ContentMenuItem
         return $this;
     }
 
+    public function translateTitle(): static
+    {
+        $this->title = __($this->getTitle());
+
+        return $this;
+    }
+
     public function getUrl(): ?string
     {
-        return $this->url;
+        return $this->evaluate($this->url);
     }
 
     public function url(Closure | string | null $url): static
@@ -44,7 +56,7 @@ class ContentMenuItem
 
     public function getIcon(): ?string
     {
-        return $this->icon;
+        return $this->evaluate($this->icon);
     }
 
     public function icon(Closure | string | null $icon): static
@@ -56,7 +68,7 @@ class ContentMenuItem
 
     public function getTarget(): ?string
     {
-        return $this->target;
+        return $this->evaluate($this->target);
     }
 
     public function target(Closure | string | null $target): static
