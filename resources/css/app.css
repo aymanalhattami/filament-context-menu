@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.context-menu-filament-action button{
+.context-menu-filament-action button,
+.context-menu-filament-action a {
     @apply w-full justify-start
 }
