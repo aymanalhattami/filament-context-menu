@@ -27,7 +27,7 @@ class ContentMenuItem
 
     public function getTitle(): ?string
     {
-        if($this->isTitleTranslatable()) {
+        if ($this->isTitleTranslatable()) {
             return __($this->evaluate($this->title));
         }
 
