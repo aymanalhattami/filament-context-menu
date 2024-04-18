@@ -1,10 +1,21 @@
 @if(method_exists(static::class, 'getContextMenu'))
-    <div id="contextMenu" class="z-50 min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md w-64" style="display: none;">
+    <div id="contextMenu" class="z-50 min-w-[8rem] max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md w-64" style="display: none;">
         @foreach(static::getContextMenu()->getItems() as $item)
-            <div @click="contextMenuOpen=false" class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
-                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}">{{ $item->getTitle() }}</a>
-                <span class="ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600">⌘[</span>
-            </div>
+            <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-4 select-none group items-center justify-start rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
+                <span class="flex h-6 w-6 items-center justify-center">
+                    <x-filament::icon
+                        :icon="$item->getIcon()"
+                        class="h-6 w-6 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"
+                    />
+                </span>
+                <span>{{ $item->getTitle() }}</span>
+                <span>
+                    <x-filament::icon
+                        :icon="$item->getIcon()"
+                        class="h-6 w-6 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"
+                    />
+                </span>
+            </a>
         @endforeach
     </div>
 
