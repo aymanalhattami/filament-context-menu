@@ -1,5 +1,5 @@
 @if(method_exists(static::class, 'getContextMenu'))
-    <div id="contextMenu" class="z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1.5 shadow-md" style="display: none;">
+    <div id="contextMenu" class="z-50 min-w-48	 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1.5 shadow-md" style="display: none;">
         @foreach(static::getContextMenu()->getItems() as $item)
             @if($item instanceof \Filament\Actions\Action)
                 <span class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
