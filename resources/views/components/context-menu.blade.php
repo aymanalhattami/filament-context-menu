@@ -15,6 +15,8 @@
                                 class="h-6 w-6 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"
                             />
                         </span>
+                        @else
+                            <span class="flex min-h-6 min-w-6 items-center justify-center">
                         @endif
                         <span>{{ $item->getTitle() }}</span>
                     </span>
