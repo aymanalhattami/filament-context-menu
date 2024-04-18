@@ -24,6 +24,8 @@
                         </x-filament::badge>
                     </span>
                 </a>
+            @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
+                <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
             @endif
         @endforeach
     </div>
