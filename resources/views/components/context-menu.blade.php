@@ -12,18 +12,11 @@
                             <span class="flex h-5 w-5 items-center justify-center">
                                 <x-filament::icon
                                     :icon="$item->getIcon()"
-                                    class="h-5 w-5 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"/>
+                                    class="h-5 w-5 ml-auto text-xs tracking-widest text-neutral-400"/>
                             </span>
-{{--                        @else--}}
-{{--                            <span class="block min-h-6 min-w-6 items-center justify-center"></span>--}}
                         @endif
                         <span class="font-semibold hover:underline group-hover/link:underline group-focus-visible/link:underline text-sm text-gray-700 dark:text-gray-200">{{ $item->getTitle() }}</span>
                     </span>
-{{--                    <span>--}}
-{{--                        <x-filament::badge>--}}
-{{--                            New--}}
-{{--                        </x-filament::badge>--}}
-{{--                    </span>--}}
                 </a>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
                 <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
