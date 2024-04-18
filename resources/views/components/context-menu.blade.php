@@ -1,12 +1,18 @@
 @if(method_exists(static::class, 'getContextMenu'))
-    <div id="contextMenu" class="flex z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-2 shadow-md dark:bg-gray-950 dark:text-white dark:border-black" style="display: none;">
+    <div id="contextMenu" class="flex z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10" style="display: none;">
         @foreach(static::getContextMenu()->getItems() as $item)
             @if($item instanceof \Filament\Actions\Action)
-                <span class="flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-gray-100">
+                <span @class([
+                    'context-menu-filament-action flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5',
+                    'mt-1' => !$loop->first
+                ])>
                     {{ $item }}
                 </span>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuItem)
-                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" class="flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-gray-100">
+                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" @class([
+                    "flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5",
+                    'mt-1' => !$loop->first,
+                ])>
                     <span class="flex gap-x-1">
                         @if(filled($item->getIcon()))
                             <span class="flex h-5 w-5 items-center justify-center">
@@ -19,7 +25,10 @@
                     </span>
                 </a>
             @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
-                <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
+                <div @class([
+                    "flex h-px my-1 -mx-1 bg-gray-100 dark:bg-white/5",
+                    'mt-1' => !$loop->first,
+                ])></div>
             @endif
         @endforeach
     </div>
