@@ -2,14 +2,19 @@
 
 namespace AymanAlhattami\FilamentContextMenu;
 
-use App\Helper\ContentMenuItem;
+use Closure;
 use Filament\Actions\Action;
+use Filament\Support\Concerns\EvaluatesClosures;
 
 class ContentMenu
 {
-    private ?string $title = null;
+    use EvaluatesClosures;
 
-    private array $items = [];
+    private string | null | Closure $title = null;
+
+    private Closure|bool $translateTitle = false;
+
+    private array | Closure $items = [];
 
     public static function make(): static
     {
@@ -18,25 +23,41 @@ class ContentMenu
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        if($this->isTitleTranslatable()) {
+            return __($this->evaluate($this->title));
+        }
+
+        return $this->evaluate($this->title);
     }
 
-    public function title(?string $title): static
+    public function title(string|Closure $title): static
     {
         $this->title = $title;
 
         return $this;
     }
 
+    public function translateTitle(bool|Closure $translateTitle = true): static
+    {
+        $this->translateTitle = $translateTitle;
+
+        return $this;
+    }
+
+    public function isTitleTranslatable(): bool
+    {
+        return (bool) $this->evaluate($this->translateTitle);
+    }
+
     public function getItems(): array
     {
-        return $this->items;
+        return $this->evaluate($this->items);
     }
 
     /**
      * @param  array<ContentMenuItem|Action>  $items
      */
-    public function items(array $items): static
+    public function items(array|Closure $items): static
     {
         $this->items = $items;
 
