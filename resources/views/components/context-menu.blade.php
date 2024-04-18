@@ -11,12 +11,11 @@
                     </span>
                 @endif
                 <span>{{ $item->getTitle() }}</span>
-{{--                <span>--}}
-{{--                    <x-filament::icon--}}
-{{--                        :icon="$item->getIcon()"--}}
-{{--                        class="h-6 w-6 ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600"--}}
-{{--                    />--}}
-{{--                </span>--}}
+                <span>
+                    <x-filament::badge>
+                        New
+                    </x-filament::badge>
+                </span>
             </a>
         @endforeach
     </div>
