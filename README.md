@@ -12,6 +12,8 @@ This package is used to add context menu (right click menu) for resource pages a
 * Support left-to-right and right-to-left direction.
 * You can set a divider between menu actions.
 
+[Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
+
 ## Installation
 
 You can install the package via composer:
@@ -283,6 +285,21 @@ class ListUsers extends ListRecords
     }
     
     // 
+}
+```
+
+### Note 
+For action to have a nice look, use ```->link()``` method for the action
+ 
+```php
+public static function getContextMenu(): ContextMenu
+{
+    return ContextMenu::make()
+        ->actions([
+            Action::make('Create user')
+                ->url(CreateUser::getUrl())
+                ->link()
+            ]);
 }
 ```
 

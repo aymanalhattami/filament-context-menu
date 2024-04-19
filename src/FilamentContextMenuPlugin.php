@@ -9,7 +9,7 @@ class FilamentContextMenuPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'filament-context-menu';
     }
 
     public function register(Panel $panel): void
