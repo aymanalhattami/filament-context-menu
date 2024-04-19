@@ -7,10 +7,10 @@
 
 ---
 This package is used to add context menu (right click menu) for resource pages and custom pages of [Filament Admin Panel](https://filamentphp.com/).
+* It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu items.
 * Support dark and light mode.
 * Support left-to-right and right-to-left direction.
 * You can set a divider between menu actions.
-* It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu items.
 
 ## Installation
 
@@ -194,29 +194,6 @@ class ListUsers extends ListRecords
 }
 ```
 
-### Export Action
-You can use ```Filament\Actions\ExportAction```
-
-```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-
-class ListUsers extends ListRecords
-{
-    // 
-    
-    public static function getContextMenu(): ContextMenu
-    {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ExportAction::make()
-            ]);
-    }
-    
-    // 
-}
-```
-
 ### Force Delete Action
 You can use ```Filament\Actions\ForceDeleteAction```
 
@@ -241,7 +218,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Import Action
-You can use ```Filament\Actions\ForceDeleteAction```
+You can use ```Filament\Actions\ImportAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
