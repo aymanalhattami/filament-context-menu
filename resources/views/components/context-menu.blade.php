@@ -1,30 +1,30 @@
 @if(method_exists(static::class, 'getContextMenu'))
     <div id="contextMenu" class="flex z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10" style="display: none;">
-        @foreach(static::getContextMenu()->getItems() as $item)
-            @if($item instanceof \Filament\Actions\Action)
+        @foreach(static::getContextMenu()->getActions() as $action)
+            @if($action instanceof \Filament\Actions\Action)
                 <span @class([
                     'context-menu-filament-action flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5',
                     'mt-1' => !$loop->first
                 ])>
-                    {{ $item }}
+                    {{ $action }}
                 </span>
-            @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuItem)
-                <a href="{{ $item->getUrl() }}" target="{{ $item->getTarget() }}" @click="contextMenuOpen=false" @class([
+            @elseif($action instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuItem)
+                <a href="{{ $action->getUrl() }}" target="{{ $action->getTarget() }}" @click="contextMenuOpen=false" @class([
                     "flex gap-x-1 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5",
                     'mt-1' => !$loop->first,
                 ])>
                     <span class="flex gap-x-1">
-                        @if(filled($item->getIcon()))
+                        @if(filled($action->getIcon()))
                             <span class="flex h-5 w-5 items-center justify-center">
                                 <x-filament::icon
-                                    :icon="$item->getIcon()"
+                                    :icon="$action->getIcon()"
                                     class="h-5 w-5 ml-auto text-xs tracking-widest text-neutral-400"/>
                             </span>
                         @endif
-                        <span class="font-semibold hover:underline group-hover/link:underline group-focus-visible/link:underline text-sm text-gray-700 dark:text-gray-200">{{ $item->getTitle() }}</span>
+                        <span class="font-semibold hover:underline group-hover/link:underline group-focus-visible/link:underline text-sm text-gray-700 dark:text-gray-200">{{ $action->getTitle() }}</span>
                     </span>
                 </a>
-            @elseif($item instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
+            @elseif($action instanceof \AymanAlhattami\FilamentContextMenu\ContentMenuDivider)
                 <div @class([
                     "flex h-px my-1 -mx-1 bg-gray-100 dark:bg-white/5",
                     'mt-1' => !$loop->first,

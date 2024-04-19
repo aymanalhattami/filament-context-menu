@@ -6,7 +6,7 @@ use Closure;
 use Filament\Actions\Action;
 use Filament\Support\Concerns\EvaluatesClosures;
 
-class ContentMenu
+class ContextMenu
 {
     use EvaluatesClosures;
 
@@ -14,7 +14,7 @@ class ContentMenu
 
     private Closure | bool $translateTitle = false;
 
-    private array | Closure $items = [];
+    private array | Closure $actions = [];
 
     public static function make(): static
     {
@@ -49,17 +49,17 @@ class ContentMenu
         return (bool) $this->evaluate($this->translateTitle);
     }
 
-    public function getItems(): array
+    public function getActions(): array
     {
-        return $this->evaluate($this->items);
+        return $this->evaluate($this->actions);
     }
 
     /**
-     * @param  array<ContentMenuItem|Action>  $items
+     * @param  array<Action>  $actions
      */
-    public function items(array | Closure $items): static
+    public function actions(array | Closure $actions): static
     {
-        $this->items = $items;
+        $this->actions = $actions;
 
         return $this;
     }
