@@ -18,7 +18,7 @@ class RefreshAction extends Action
         $this->label('Refresh')
             ->translateLabel()
             ->color('gray')
-            ->url(url()->previous())
+            ->url(url()->current())
             ->icon('heroicon-o-arrow-path')
             ->link();
     }
