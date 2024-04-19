@@ -9,7 +9,7 @@
 This package is used to add context menu (right click menu) for resource pages and custom pages of [Filament Admin Panel](https://filamentphp.com/).
 * Support dark and light mode.
 * Support left-to-right and right-to-left direction.
-* You can set a divider between menu items.
+* You can set a divider between menu actions.
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu items.
 
 ## Installation
@@ -21,7 +21,7 @@ composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage
-1. Define a ```getContextMenu``` method inside the page (resource page or custom page), the method should return and instance of ```AymanAlhattami\FilamentContextMenu\ContextMenu```
+1. Define a ```getContextMenu``` method inside the page (resource page or custom page), the method should return an instance of ```AymanAlhattami\FilamentContextMenu\ContextMenu```
 2. Use ```ContextMenu``` class to set menu actions as an array
 
 ```php
@@ -47,8 +47,10 @@ class ListUsers extends ListRecords
 }
 ```
 
+## More options
+
 ### Divider
-Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between items
+Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\TrashedUsers;
@@ -78,7 +80,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Create Action
-use ```Filament\Actions\CreateAction``` as an item action for context menu 
+You can use ```Filament\Actions\CreateAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -101,7 +103,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Edit Action
-use ```Filament\Actions\EditAction``` as an item action for context menu
+You can use ```Filament\Actions\EditAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -124,7 +126,7 @@ class ListUsers extends ListRecords
 ```
 
 ### View Action
-use ```Filament\Actions\ViewAction``` as an item action for context menu
+You can use ```Filament\Actions\ViewAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -147,7 +149,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Delete Action
-use ```Filament\Actions\DeleteAction``` as an item action for context menu
+You can use  ```Filament\Actions\DeleteAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -170,7 +172,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Export Action
-use ```Filament\Actions\ExportAction``` as an item action for context menu
+You can use ```Filament\Actions\ExportAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -193,7 +195,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Export Action
-use ```Filament\Actions\ExportAction``` as an item action for context menu
+You can use ```Filament\Actions\ExportAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -216,7 +218,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Force Delete Action
-use ```Filament\Actions\ForceDeleteAction``` as an item action for context menu
+You can use ```Filament\Actions\ForceDeleteAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -239,7 +241,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Import Action
-use ```Filament\Actions\ForceDeleteAction``` as an item action for context menu
+You can use ```Filament\Actions\ForceDeleteAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -262,7 +264,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Replicate Action
-use ```Filament\Actions\ReplicateAction``` as an item action for context menu
+You can use ```Filament\Actions\ReplicateAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -285,7 +287,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Restore Action
-use ```Filament\Actions\RestoreAction``` as an item action for context menu
+You can use ```Filament\Actions\RestoreAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
