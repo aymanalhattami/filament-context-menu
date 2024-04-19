@@ -24,12 +24,10 @@
 
             contextMenuTrigger.addEventListener('contextmenu', function(event) {
                 event.preventDefault();
-                contextMenu.style.opacity = '0';
                 contextMenu.style.display = 'block'; // Show the context menu
 
                 setTimeout(function() {
                     calculateContextMenuPosition(event);
-                    contextMenu.style.opacity = '1';
                 }, 0); // Similar to $nextTick
             });
 
