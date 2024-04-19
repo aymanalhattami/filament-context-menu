@@ -4,7 +4,7 @@ namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Actions\Action;
 
-class GoBackAction extends Action
+class RefreshAction extends Action
 {
     public static function getDefaultName(): ?string
     {
@@ -15,11 +15,11 @@ class GoBackAction extends Action
     {
         parent::setUp();
 
-        $this->label('Go back')
+        $this->label('Refresh')
             ->translateLabel()
             ->color('gray')
             ->url(url()->previous())
-            ->icon('heroicon-o-arrow-left')
+            ->icon('heroicon-o-arrow-path')
             ->link();
     }
 }
