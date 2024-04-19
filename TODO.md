@@ -1,2 +1,6 @@
 - dark mode
-- 
+- ltr and rtl
+- reload action
+- go back action
+- forward action
+- inspect action
