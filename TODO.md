@@ -6,3 +6,5 @@
 - inspect action
 - test hide action
 - test for custom page
+- test CreateAction, EditAction, DeleteAction, ForceDeleteAction, ImportAction, RestoreAction, ...
+- set a view() method for ContentMenuDivider

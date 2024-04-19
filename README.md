@@ -6,11 +6,11 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
 ---
-This package is used to add context menu for resource pages and custom pages of [Filament Admin Panel](https://filamentphp.com/)
-* Support dark and light mode
-* Support LTR and RTL direction
-* Support Divider between menu items
-* Use of ```Filament\Actions\Action``` to set menu items.
+This package is used to add context menu (right click menu) for resource pages and custom pages of [Filament Admin Panel](https://filamentphp.com/).
+* Support dark and light mode.
+* Support left-to-right and right-to-left direction.
+* You can set a divider between menu items.
+* It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu items.
 
 ## Installation
 
@@ -21,16 +21,16 @@ composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage
-1. Define a ```getContextMenu``` method inside the page, the method should return and instance of ```ContentMenu```
-2. Use ```ContentMenu``` class to set menu items as an array
+1. Define a ```getContextMenu``` method inside the page (resource page or custom page), the method should return and instance of ```AymanAlhattami\FilamentContextMenu\ContextMenu```
+2. Use ```ContextMenu``` class to set menu actions as an array
 
 ```php
+use App\Filament\Resources\UserResource\Pages\CreateUser;
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\ContentMenuDivider;
 use Filament\Actions\Action;
 
-class ListMarkets extends ListRecords
+class ListUsers extends ListRecords
 {
     // 
     
@@ -38,43 +38,269 @@ class ListMarkets extends ListRecords
     {
         return ContextMenu::make()
             ->actions([
-                    Action::make()
-                        ->label('Create market')
-                        ->translateLabel()
-                        ->link()
-                        ->color('gray')
-                        ->url(CreateMarket::getUrl())
-                        ->icon('heroicon-o-plus-circle'),
-                    ImportAction::make()
-                        ->link()
-                        ->label('Excel import')
-                        ->translateLabel()
-                        ->importer(MarketImporter::class)
-                        ->icon('heroicon-o-arrow-up-tray'),
-                    Action::make('Upload images')
-                        ->translateLabel()
-                        ->link()
-                        ->icon('heroicon-o-photo')
-                        ->modalWidth(MaxWidth::ExtraLarge)
-                        ->color('gray')
-                        ->form(/* form inputs */)
-                        ->action(/* you own handling */),
-                    ContentMenuDivider::make(),
-                    Action::make('requested_markets')
-                        ->label('Requested Markets')
-                        ->link()
-                        ->color('gray')
-                        ->url(CreateMarket::getUrl())
-                        ->badge(25)
-                        ->icon('heroicon-o-building-storefront'),
-                    Action::make('requested_markets')
-                        ->label('Closed markets')
-                        ->link()
-                        ->color('gray')
-                        ->url(CreateMarket::getUrl())
-                        ->badge(4)
-                        ->icon('heroicon-o-building-storefront'),
-                ]);
+                Action::make('Create user')
+                    ->url(CreateUser::getUrl())
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Divider
+Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between items
+```php
+use App\Filament\Resources\UserResource\Pages\CreateUser;
+use App\Filament\Resources\UserResource\Pages\TrashedUsers;
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use Filament\Actions\Action;
+use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                Action::make('Create user')
+                    ->url(CreateUser::getUrl()),
+                ContextMenuDivider::make(),
+                Action::make('Trashed user')
+                    ->url(TrashedUsers::getUrl()),
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Create Action
+use ```Filament\Actions\CreateAction``` as an item action for context menu 
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\CreateAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Edit Action
+use ```Filament\Actions\EditAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\EditAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### View Action
+use ```Filament\Actions\ViewAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ViewAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Delete Action
+use ```Filament\Actions\DeleteAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\DeleteAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Export Action
+use ```Filament\Actions\ExportAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ExportAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Export Action
+use ```Filament\Actions\ExportAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ExportAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Force Delete Action
+use ```Filament\Actions\ForceDeleteAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ForceDeleteAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Import Action
+use ```Filament\Actions\ForceDeleteAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ImportAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Replicate Action
+use ```Filament\Actions\ReplicateAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\ReplicateAction::make()
+            ]);
+    }
+    
+    // 
+}
+```
+
+### Restore Action
+use ```Filament\Actions\RestoreAction``` as an item action for context menu
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+
+class ListUsers extends ListRecords
+{
+    // 
+    
+    public static function getContextMenu(): ContextMenu
+    {
+        return ContextMenu::make()
+            ->actions([
+                \Filament\Actions\RestoreAction::make()
+            ]);
     }
     
     // 
