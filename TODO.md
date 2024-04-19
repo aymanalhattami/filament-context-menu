@@ -4,3 +4,5 @@
 - go back action
 - forward action
 - inspect action
+- test hide action
+- test for custom page

@@ -32,7 +32,7 @@ class FilamentContextMenuServiceProvider extends PackageServiceProvider
         );
 
         FilamentView::registerRenderHook(
-            PanelsRenderHook::PAGE_START,
+            PanelsRenderHook::PAGE_END,
             fn () => view('filament-context-menu::components.context-menu'),
         );
     }
