@@ -25,8 +25,8 @@ class CopyAction extends Action
             ->extraAttributes(fn () => [
                 'x-data' => '',
                 'x-on:click' => new HtmlString('
-                    const textToCopy = window.getSelection().toString();
-                    navigator.clipboard.writeText(textToCopy).then(
+                    const filamentContextMenuTextToCopy = window.getSelection().toString();
+                    navigator.clipboard.writeText(filamentContextMenuTextToCopy).then(
                         () => {
                             console.log("Text copied to clipboard");
                         },
@@ -35,6 +35,7 @@ class CopyAction extends Action
                         }
                     );
                 '),
-            ]);
+            ])
+        ;
     }
 }
