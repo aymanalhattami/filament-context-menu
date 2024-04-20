@@ -18,8 +18,11 @@ class GoBackAction extends Action
         $this->label('Go back')
             ->translateLabel()
             ->color('gray')
-            ->url(url()->previous())
             ->icon('heroicon-o-arrow-left')
-            ->link();
+            ->link()
+            ->extraAttributes([
+                'x-data' => '',
+                'x-on:click' => 'window.history.back()',
+            ]);
     }
 }

@@ -8,18 +8,21 @@ class RefreshAction extends Action
 {
     public static function getDefaultName(): ?string
     {
-        return 'go back';
+        return 'refresh';
     }
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->label('Refresh')
+        $this->label('refresh')
             ->translateLabel()
             ->color('gray')
-            ->url(request()->fullUrl())
             ->icon('heroicon-o-arrow-path')
-            ->link();
+            ->link()
+            ->extraAttributes([
+                'x-data' => '',
+                'x-on:click' => 'window.location.reload()',
+            ]);
     }
 }
