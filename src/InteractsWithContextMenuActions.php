@@ -2,9 +2,7 @@
 
 namespace AymanAlhattami\FilamentContextMenu;
 
-use Closure;
 use Filament\Actions\Action;
-use Filament\Actions\ActionGroup;
 use InvalidArgumentException;
 
 trait InteractsWithContextMenuActions
@@ -20,11 +18,11 @@ trait InteractsWithContextMenuActions
     {
         foreach ($this->getContextMenuActions() as $action) {
 
-            if (!$action instanceof Action and !$action instanceof ContextMenuDivider) {
+            if (! $action instanceof Action and ! $action instanceof ContextMenuDivider) {
                 throw new InvalidArgumentException('context menu action must be an instance of ' . Action::class . '.');
             }
 
-            if($action instanceof Action) {
+            if ($action instanceof Action) {
                 $this->cacheAction($action);
                 $this->cachedContextMenuActions[] = $action;
             }
@@ -36,7 +34,7 @@ trait InteractsWithContextMenuActions
         return $this->cachedContextMenuActions;
     }
 
-    public function getContextMenu() : ContextMenu
+    public function getContextMenu(): ContextMenu
     {
         return ContextMenu::make()->actions($this->getCachedContextMenuActions());
     }
