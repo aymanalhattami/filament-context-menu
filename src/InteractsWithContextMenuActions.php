@@ -22,7 +22,7 @@ trait InteractsWithContextMenuActions
                 throw new InvalidArgumentException('context menu action must be an instance of ' . Action::class . '.');
             }
 
-            if ($action instanceof Action) {
+            if ($action instanceof Action or $action instanceof ContextMenuDivider) {
                 $this->cacheAction($action);
                 $this->cachedContextMenuActions[] = $action;
             }
@@ -36,7 +36,7 @@ trait InteractsWithContextMenuActions
 
     public function getContextMenu(): ContextMenu
     {
-        return ContextMenu::make()->actions($this->getCachedContextMenuActions());
+        return ContextMenu::make()->actions($this->getContextMenuActions());
     }
 
     public function getContextMenuActions(): array

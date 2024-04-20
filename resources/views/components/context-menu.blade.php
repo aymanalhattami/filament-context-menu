@@ -3,7 +3,11 @@
          class="flex z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10"
          style="display: none;">
         @foreach(static::getContextMenu()->getActions() as $action)
-            @if($action instanceof \Filament\Actions\Action)
+            @if($action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
+                <x-filament-context-menu::divider />
+            @endif
+
+            @if($action instanceof \Filament\Actions\Action and !$action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
                 @if($action->isVisible())
                     <div @class([
                         'context-menu-filament-action flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5',
@@ -12,11 +16,6 @@
                         {{ $action }}
                     </div>
                 @endif
-            @elseif($action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
-                <div @class([
-                    "flex h-px my-1 -mx-1 bg-gray-100 dark:bg-white/5",
-                    'mt-1' => !$loop->first,
-                ])></div>
             @endif
         @endforeach
     </div>
