@@ -15,7 +15,7 @@ class RefreshAction extends Action
     {
         parent::setUp();
 
-        $this->label('refresh')
+        $this->label('Refresh')
             ->translateLabel()
             ->color('gray')
             ->icon('heroicon-o-arrow-path')
