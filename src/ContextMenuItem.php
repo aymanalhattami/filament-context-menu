@@ -6,7 +6,7 @@ use Closure;
 use Filament\Actions\Action;
 use Filament\Support\Concerns\EvaluatesClosures;
 
-class ContentMenuItem
+class ContextMenuItem
 {
     use EvaluatesClosures;
 

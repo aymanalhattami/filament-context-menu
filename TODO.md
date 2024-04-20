@@ -10,6 +10,7 @@
 - set a view() method for ContentMenuDivider
 - add description and keyboards to composer json file
 - document Refresh, GoBack actions
+- enable disable for each page
 
 # features
 - group actions

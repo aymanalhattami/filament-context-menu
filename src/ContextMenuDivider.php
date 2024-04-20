@@ -2,7 +2,7 @@
 
 namespace AymanAlhattami\FilamentContextMenu;
 
-class ContentMenuDivider
+class ContextMenuDivider
 {
     public static function make(): static
     {
