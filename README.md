@@ -23,26 +23,26 @@ composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage
-1. Define a ```getContextMenu``` method inside the page (resource page or custom page), the method should return an instance of ```AymanAlhattami\FilamentContextMenu\ContextMenu```
-2. Use ```ContextMenu``` class to set menu actions as an array
+1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page you want to add context menu.
+2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
 use Filament\Actions\Action;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
-    // 
+    use InteractsWithContextMenuActions;
     
-    public static function getContextMenu(): ContextMenu
+    public function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                Action::make('Create user')
-                    ->url(CreateUser::getUrl())
-            ]);
+        return [
+            Action::make('Create user')
+                ->url(CreateUser::getUrl())
+        ];
     }
     
     // 
@@ -57,24 +57,25 @@ Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider b
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\TrashedUsers;
 use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
 use Filament\Actions\Action;
 use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                Action::make('Create user')
-                    ->url(CreateUser::getUrl()),
-                ContextMenuDivider::make(),
-                Action::make('Trashed user')
-                    ->url(TrashedUsers::getUrl()),
-            ]);
+        return [
+            Action::make('Create user')
+                ->url(CreateUser::getUrl()),
+            ContextMenuDivider::make(),
+            Action::make('Trashed user')
+                ->url(TrashedUsers::getUrl()),
+        ];
     }
     
     // 
@@ -86,18 +87,20 @@ You can use ```Filament\Actions\CreateAction```
 
 ```php
 use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\CreateAction::make()
-            ]);
+        return [
+            \Filament\Actions\CreateAction::make()
+        ];
     }
     
     // 
@@ -108,19 +111,21 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\EditAction```
 
 ```php
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class ViewUser extends ViewRecord
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\EditAction::make()
-            ]);
+        return [
+            \Filament\Actions\EditAction::make()
+        ];
     }
     
     // 
@@ -131,19 +136,21 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\ViewAction```
 
 ```php
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\EditRecord;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class EditUser extends EditRecord
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ViewAction::make()
-            ]);
+        return [
+            \Filament\Actions\ViewAction::make()
+        ];
     }
     
     // 
@@ -154,19 +161,21 @@ class ListUsers extends ListRecords
 You can use  ```Filament\Actions\DeleteAction```
 
 ```php
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class ViewUser extends ViewRecord
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\DeleteAction::make()
-            ]);
+        return [
+            \Filament\Actions\DeleteAction::make()
+        ];
     }
     
     // 
@@ -179,17 +188,19 @@ You can use ```Filament\Actions\ExportAction```
 ```php
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ExportAction::make()
-            ]);
+        return [
+            \Filament\Actions\ExportAction::make()
+        ];
     }
     
     // 
@@ -200,19 +211,21 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\ForceDeleteAction```
 
 ```php
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class ViewUser extends ViewRecord
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ForceDeleteAction::make()
-            ]);
+        return [
+            \Filament\Actions\ForceDeleteAction::make()
+        ];
     }
     
     // 
@@ -225,17 +238,19 @@ You can use ```Filament\Actions\ImportAction```
 ```php
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ImportAction::make()
-            ]);
+        return [
+            \Filament\Actions\ImportAction::make()
+        ];
     }
     
     // 
@@ -248,17 +263,19 @@ You can use ```Filament\Actions\ReplicateAction```
 ```php
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class ViewUser extends ViewRecord
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\ReplicateAction::make()
-            ]);
+        return [
+            \Filament\Actions\ReplicateAction::make()
+        ];
     }
     
     // 
@@ -271,17 +288,19 @@ You can use ```Filament\Actions\RestoreAction```
 ```php
 use Filament\Resources\Pages\ListRecords;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
 class ListUsers extends ListRecords
 {
+    use InteractsWithContextMenuActions;
+
     // 
     
-    public static function getContextMenu(): ContextMenu
+    public static function getContextMenuActions(): array
     {
-        return ContextMenu::make()
-            ->actions([
-                \Filament\Actions\RestoreAction::make()
-            ]);
+        return [
+            \Filament\Actions\RestoreAction::make()
+        ];
     }
     
     // 
@@ -289,17 +308,16 @@ class ListUsers extends ListRecords
 ```
 
 ### Note 
-For action to have a nice look, use ```->link()``` method for the action
+For action to have a nice style, use ```->link()``` method a the action, [link](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
  
 ```php
-public static function getContextMenu(): ContextMenu
+public static function getContextMenuActions(): array
 {
-    return ContextMenu::make()
-        ->actions([
-            Action::make('Create user')
-                ->url(CreateUser::getUrl())
-                ->link()
-            ]);
+    return [
+        Action::make('Create user')
+            ->url(CreateUser::getUrl())
+            ->link()
+        ];
 }
 ```
 
