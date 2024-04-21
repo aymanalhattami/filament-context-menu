@@ -16,9 +16,9 @@ class ContextMenu
 
     private array | Closure $actions = [];
 
-    public static function make(): static
+    public static function make(): self
     {
-        return new static;
+        return new self;
     }
 
     public function getTitle(): ?string
