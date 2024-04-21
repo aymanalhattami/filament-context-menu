@@ -23,7 +23,7 @@ composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage
-1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page you want to add context menu.
+1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page (resource page or custom page) you want to add context menu.
 2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
 ```php
