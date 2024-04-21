@@ -9,6 +9,13 @@ trait InteractsWithContextMenuActions
 {
     protected array $cachedContextMenuActions = [];
 
+    public static bool $contextMenuEnabled = true;
+
+    public static function isContextMenuEnabled(): bool
+    {
+        return static::$contextMenuEnabled;
+    }
+
     public function bootedInteractsWithContextMenuActions(): void
     {
         $this->cacheContextMenuActions();
