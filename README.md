@@ -83,7 +83,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Create Action
-You can use ```Filament\Actions\CreateAction```
+You can use ```Filament\Actions\CreateAction```, visit [filament create action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/create) for more information.
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -100,6 +100,12 @@ class ListUsers extends ListRecords
     {
         return [
             \Filament\Actions\CreateAction::make()
+                ->model(App\Models\User::class)
+                 ->form([
+                    TextInput::make('name')
+                        ->required(),
+                    // ...
+                ])
         ];
     }
     
@@ -108,7 +114,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Edit Action
-You can use ```Filament\Actions\EditAction```
+You can use ```Filament\Actions\EditAction```, visit [filament edit action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/edit) for more information.
 
 ```php
 use Filament\Resources\Pages\ViewRecord;
@@ -125,6 +131,12 @@ class ViewUser extends ViewRecord
     {
         return [
             \Filament\Actions\EditAction::make()
+                ->record($this->user)
+                ->form([
+                    TextInput::make('name')
+                        ->required(),
+                    // ...
+                ])
         ];
     }
     
@@ -133,7 +145,7 @@ class ViewUser extends ViewRecord
 ```
 
 ### View Action
-You can use ```Filament\Actions\ViewAction```
+You can use ```Filament\Actions\ViewAction```, visit [filament view action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/view) for more information.
 
 ```php
 use Filament\Resources\Pages\EditRecord;
@@ -150,6 +162,13 @@ class EditUser extends EditRecord
     {
         return [
             \Filament\Actions\ViewAction::make()
+                ->record($this->user)
+                 ->form([
+                    TextInput::make('name')
+                        ->required(),
+                    // ...
+                ])
+                
         ];
     }
     
@@ -158,7 +177,7 @@ class EditUser extends EditRecord
 ```
 
 ### Delete Action
-You can use  ```Filament\Actions\DeleteAction```
+You can use  ```Filament\Actions\DeleteAction```, visit [filament delete action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/delete) for more information.
 
 ```php
 use Filament\Resources\Pages\ViewRecord;
@@ -175,6 +194,7 @@ class ViewUser extends ViewRecord
     {
         return [
             \Filament\Actions\DeleteAction::make()
+                ->record($this->user)
         ];
     }
     
@@ -182,15 +202,15 @@ class ViewUser extends ViewRecord
 }
 ```
 
-### Export Action
-You can use ```Filament\Actions\ExportAction```
+### Replicate Action
+You can use  ```Filament\Actions\ReplicateAction```, visit [filament replicate action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/replicate) for more information.
 
 ```php
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 use AymanAlhattami\FilamentContextMenu\ContextMenu;
 use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
 
-class ListUsers extends ListRecords
+class ViewUser extends ViewRecord
 {
     use InteractsWithContextMenuActions;
 
@@ -199,7 +219,8 @@ class ListUsers extends ListRecords
     public static function getContextMenuActions(): array
     {
         return [
-            \Filament\Actions\ExportAction::make()
+            \Filament\Actions\ReplicateAction::make()
+                ->record($this->user)
         ];
     }
     
@@ -208,7 +229,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Force Delete Action
-You can use ```Filament\Actions\ForceDeleteAction```
+You can use ```Filament\Actions\ForceDeleteAction```, visit [filament force delete action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/force-delete) for more information.
 
 ```php
 use Filament\Resources\Pages\ViewRecord;
@@ -225,56 +246,7 @@ class ViewUser extends ViewRecord
     {
         return [
             \Filament\Actions\ForceDeleteAction::make()
-        ];
-    }
-    
-    // 
-}
-```
-
-### Import Action
-You can use ```Filament\Actions\ImportAction```
-
-```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-
-class ListUsers extends ListRecords
-{
-    use InteractsWithContextMenuActions;
-
-    // 
-    
-    public static function getContextMenuActions(): array
-    {
-        return [
-            \Filament\Actions\ImportAction::make()
-        ];
-    }
-    
-    // 
-}
-```
-
-### Replicate Action
-You can use ```Filament\Actions\ReplicateAction```
-
-```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-
-class ViewUser extends ViewRecord
-{
-    use InteractsWithContextMenuActions;
-
-    // 
-    
-    public static function getContextMenuActions(): array
-    {
-        return [
-            \Filament\Actions\ReplicateAction::make()
+                ->record($this->user)
         ];
     }
     
@@ -283,7 +255,7 @@ class ViewUser extends ViewRecord
 ```
 
 ### Restore Action
-You can use ```Filament\Actions\RestoreAction```
+You can use ```Filament\Actions\RestoreAction```, visit [filament restore action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/restore) for more information.
 
 ```php
 use Filament\Resources\Pages\ListRecords;
@@ -300,6 +272,61 @@ class ListUsers extends ListRecords
     {
         return [
             \Filament\Actions\RestoreAction::make()
+                ->record($this->user)
+        ];
+    }
+    
+    // 
+}
+```
+
+### Import Action
+You can use ```Filament\Actions\ImportAction```, visit [filament import action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/import) for more information.
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use App\Filament\Imports\UserImporter;
+
+class ListUsers extends ListRecords
+{
+    use InteractsWithContextMenuActions;
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [
+            \Filament\Actions\ImportAction::make()
+                ->importer(UserImporter::class)
+        ];
+    }
+    
+    // 
+}
+```
+
+### Export Action
+You can use ```Filament\Actions\ExportAction```, visit [filament export action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/export) for more information.
+
+```php
+use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use App\Filament\Exports\UserExporter;
+
+class ListUsers extends ListRecords
+{
+    use InteractsWithContextMenuActions;
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [
+            \Filament\Actions\ExportAction::make()
+                ->exporter(UserExporter::class)
         ];
     }
     
