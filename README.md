@@ -11,6 +11,11 @@ This package is used to add context menu (right click menu) for resource pages a
 * Support dark and light mode.
 * Support left-to-right and right-to-left direction.
 * You can set a divider between menu actions.
+* Supports resource pages and custom pages.
+* There are a set of useful actions:
+  * ```AymanAlhattami\FilamentContextMenu\RefreshAction``` to refresh the page.
+  * ```AymanAlhattami\FilamentContextMenu\GoBackAction``` to go back to previous page.
+  * ```AymanAlhattami\FilamentContextMenu\GoForward``` to go back to forward page.
 
 [Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
 
@@ -23,7 +28,7 @@ composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage
-1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page (resource page or custom page) you want to add context menu.
+1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page you want to add context menu.
 2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
 ```php
@@ -52,7 +57,7 @@ class ListUsers extends ListRecords
 ## More options
 
 ### Divider
-Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions
+You can use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\TrashedUsers;
@@ -335,7 +340,7 @@ class ListUsers extends ListRecords
 ```
 
 ### Note 
-For action to have a nice style, use ```->link()``` method a the action, [link](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
+For action to have a nice style, use ```->link()``` method of the action, [more information](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
  
 ```php
 public static function getContextMenuActions(): array
@@ -346,6 +351,11 @@ public static function getContextMenuActions(): array
             ->link()
         ];
 }
+```
+
+### Full example
+```php
+
 ```
 
 ## Testing
