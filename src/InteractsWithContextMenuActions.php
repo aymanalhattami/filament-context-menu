@@ -13,7 +13,7 @@ trait InteractsWithContextMenuActions
 
     public static function isContextMenuEnabled(): bool
     {
-        return static::$contextMenuEnabled;
+        return static::$contextMenuEnabled and config('filament-context-menu.enabled', true);
     }
 
     public function bootedInteractsWithContextMenuActions(): void
