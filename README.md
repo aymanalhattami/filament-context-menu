@@ -339,6 +339,125 @@ class ListUsers extends ListRecords
 }
 ```
 
+### Example: action with modal
+You can use filament action with modal
+```php
+use Filament\Resources\Pages\ViewRecord;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+
+class ViewUser extends ViewRecord
+{
+    use InteractsWithContextMenuActions;
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [
+            Action::make('Quick edit user')
+                ->label('Quick edit user')
+                ->form([
+                    \Filament\Forms\Components\Grid::make(2)
+                        ->schema([
+                            TextInput::make('name'),
+                            TextInput::make('email'),
+                            TextInput::make('password')->password,
+                        ])
+                ])
+                ->action(function($data){
+                    $this->getRecord()->update([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'password' => $data['password'],
+                    ]);
+                })
+        ];
+    }
+    
+    // 
+}
+```
+
+### Example: refresh, go back and go forward actions
+```php
+use Filament\Resources\Pages\ViewRecord;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+
+class ViewUser extends ViewRecord
+{
+    use InteractsWithContextMenuActions;
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [
+            \AymanAlhattami\FilamentContextMenu\RefreshAction::make(),
+            \AymanAlhattami\FilamentContextMenu\GoBackAction::make(),
+            \AymanAlhattami\FilamentContextMenu\GoForwardAction::make()
+        ];
+    }
+    
+    // 
+}
+```
+
+## Enable / Disable context menu
+Method 1: To globally enable or disable context menu, you need to define an env variable called ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```.
+
+Method 2: You can also define a static variable called ```public static bool $contextMenuEnabled``` in the page and set the value to ```true``` or ```false```;
+
+```php
+use Filament\Resources\Pages\ViewRecord;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+
+class ViewUser extends ViewRecord
+{
+    use InteractsWithContextMenuActions;
+    
+    # enable / disable context menu
+    public static bool $contextMenuEnabled = true;
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [];
+    }
+    
+    // 
+}
+```
+
+Method 3: define static method called ```isContextMenuEnabled``` in the page
+```php
+use Filament\Resources\Pages\ViewRecord;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
+use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+
+class ViewUser extends ViewRecord
+{
+    use InteractsWithContextMenuActions;
+    
+    public static function isContextMenuEnabled(): bool
+    {
+        return true;
+    }
+
+    // 
+    
+    public static function getContextMenuActions(): array
+    {
+        return [];
+    }
+    
+    // 
+}
+```
+
 ### Note 
 For action to have a nice style, use ```->link()``` method of the action, [more information](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
  
@@ -351,11 +470,6 @@ public static function getContextMenuActions(): array
             ->link()
         ];
 }
-```
-
-### Full example
-```php
-
 ```
 
 ## Testing

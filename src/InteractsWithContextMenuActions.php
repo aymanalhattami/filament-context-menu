@@ -3,10 +3,13 @@
 namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Actions\Action;
+use Filament\Actions\Concerns\InteractsWithActions;
 use InvalidArgumentException;
 
 trait InteractsWithContextMenuActions
 {
+    use InteractsWithActions;
+
     protected array $cachedContextMenuActions = [];
 
     public static bool $contextMenuEnabled = true;
@@ -39,11 +42,6 @@ trait InteractsWithContextMenuActions
     public function getCachedContextMenuActions(): array
     {
         return $this->cachedContextMenuActions;
-    }
-
-    public function getContextMenu(): ContextMenu
-    {
-        return ContextMenu::make()->actions($this->getContextMenuActions());
     }
 
     public function getContextMenuActions(): array
