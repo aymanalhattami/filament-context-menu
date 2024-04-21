@@ -2,8 +2,7 @@
 
 namespace AymanAlhattami\FilamentContextMenu;
 
-    use Filament\Actions\Action;
-use Illuminate\Support\HtmlString;
+use Filament\Actions\Action;
 
 class ContextMenuDivider extends Action
 {
