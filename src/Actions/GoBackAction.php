@@ -1,28 +1,28 @@
 <?php
 
-namespace AymanAlhattami\FilamentContextMenu;
+namespace AymanAlhattami\FilamentContextMenu\Actions;
 
 use Filament\Actions\Action;
 
-class RefreshAction extends Action
+class GoBackAction extends Action
 {
     public static function getDefaultName(): ?string
     {
-        return 'refresh';
+        return 'go back';
     }
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->label('Refresh')
+        $this->label('Go back')
             ->translateLabel()
             ->color('gray')
-            ->icon('heroicon-o-arrow-path')
+            ->icon('heroicon-o-arrow-left')
             ->link()
             ->extraAttributes([
                 'x-data' => '',
-                'x-on:click' => 'window.location.reload()',
+                'x-on:click' => 'window.history.back()',
             ]);
     }
 }

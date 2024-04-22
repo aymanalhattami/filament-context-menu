@@ -1,6 +1,6 @@
 <?php
 
-namespace AymanAlhattami\FilamentContextMenu;
+namespace AymanAlhattami\FilamentContextMenu\Actions;
 
 use Filament\Actions\Action;
 
