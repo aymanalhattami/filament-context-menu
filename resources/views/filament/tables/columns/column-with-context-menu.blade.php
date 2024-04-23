@@ -44,10 +44,10 @@
         }
     }"
      x-init="
-        $watch('contextMenuOpen', function(value){
-            if(value === true){ document.body.classList.add('overflow-hidden') }
-            else { document.body.classList.remove('overflow-hidden') }
-        });
+{{--        $watch('contextMenuOpen', function(value){--}}
+{{--            if(value === true){ document.body.classList.add('overflow-hidden') }--}}
+{{--            else { document.body.classList.remove('overflow-hidden') }--}}
+{{--        });--}}
         window.addEventListener('resize', function(event) { contextMenuOpen = false; });
     "
      @contextmenu="contextMenuToggle(event)" class="relative z-50 flex h-[150px] w-[300px] text-sm items-center justify-center rounded-md border border-neutral-300 border-dashed text-neutral-800">

@@ -13,9 +13,9 @@ This package used to add context menu (right click menu) for resource pages and 
 * You can set a divider between menu actions.
 * Supports resource pages and custom pages.
 * Three actions are available for usage:
-  * ```AymanAlhattami\FilamentContextMenu\RefreshAction``` to refresh the page.
-  * ```AymanAlhattami\FilamentContextMenu\GoBackAction``` to go back to previous page.
-  * ```AymanAlhattami\FilamentContextMenu\GoForward``` to go to the forward page.
+    * ```AymanAlhattami\FilamentContextMenu\RefreshAction``` to refresh the page.
+    * ```AymanAlhattami\FilamentContextMenu\GoBackAction``` to go back to previous page.
+    * ```AymanAlhattami\FilamentContextMenu\GoForward``` to go back to forward page.
 
 [Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
 
@@ -33,10 +33,7 @@ composer require aymanalhattami/filament-context-menu
 
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use Filament\Actions\Action;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Actions\Action;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -58,13 +55,10 @@ class ListUsers extends ListRecords
 
 ### Divider
 You can use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions
+
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
-use App\Filament\Resources\UserResource\Pages\TrashedUsers;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Actions\Action;
-use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use App\Filament\Resources\UserResource\Pages\TrashedUsers;use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Actions\Action;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -91,10 +85,7 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\CreateAction```, visit [filament create action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/create) for more information.
 
 ```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\CreateAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -123,9 +114,7 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\EditAction```, visit [filament edit action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/edit) for more information.
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\EditAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -154,10 +143,7 @@ class ViewUser extends ViewRecord
 You can use ```Filament\Actions\ViewAction```, visit [filament view action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/view) for more information.
 
 ```php
-use Filament\Resources\Pages\EditRecord;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\ViewAction;
-use Filament\Forms\Components\TextInput;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\EditRecord;
 
 class EditUser extends EditRecord
 {
@@ -187,9 +173,7 @@ class EditUser extends EditRecord
 You can use  ```Filament\Actions\DeleteAction```, visit [filament delete action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/delete) for more information.
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\DeleteAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -213,9 +197,7 @@ class ViewUser extends ViewRecord
 You can use  ```Filament\Actions\ReplicateAction```, visit [filament replicate action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/replicate) for more information.
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\ReplicateAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -239,9 +221,7 @@ class ViewUser extends ViewRecord
 You can use ```Filament\Actions\ForceDeleteAction```, visit [filament force delete action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/force-delete) for more information.
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\ForceDeleteAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -265,9 +245,7 @@ class ViewUser extends ViewRecord
 You can use ```Filament\Actions\RestoreAction```, visit [filament restore action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/restore) for more information.
 
 ```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use Filament\Actions\RestoreAction;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -291,9 +269,7 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\ImportAction```, visit [filament import action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/import) for more information.
 
 ```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use App\Filament\Imports\UserImporter;
+use App\Filament\Imports\UserImporter;use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -317,9 +293,7 @@ class ListUsers extends ListRecords
 You can use ```Filament\Actions\ExportAction```, visit [filament export action](https://filamentphp.com/docs/3.x/actions/prebuilt-actions/export) for more information.
 
 ```php
-use Filament\Resources\Pages\ListRecords;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
-use App\Filament\Exports\UserExporter;
+use App\Filament\Exports\UserExporter;use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
@@ -340,11 +314,10 @@ class ListUsers extends ListRecords
 ```
 
 ### Example: action with modal
+You can use filament action with modal
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -379,12 +352,10 @@ class ViewUser extends ViewRecord
 }
 ```
 
-### Refresh, go back and go forward actions
-The package has three actions ready for use
+### Example: refresh, go back and go forward actions
+
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -395,9 +366,9 @@ class ViewUser extends ViewRecord
     public static function getContextMenuActions(): array
     {
         return [
-            \AymanAlhattami\FilamentContextMenu\RefreshAction::make(),
-            \AymanAlhattami\FilamentContextMenu\GoBackAction::make(),
-            \AymanAlhattami\FilamentContextMenu\GoForwardAction::make()
+            \AymanAlhattami\FilamentContextMenu\Actions\RefreshAction::make(),
+            \AymanAlhattami\FilamentContextMenu\Actions\GoBackAction::make(),
+            \AymanAlhattami\FilamentContextMenu\Actions\GoForwardAction::make()
         ];
     }
     
@@ -406,14 +377,12 @@ class ViewUser extends ViewRecord
 ```
 
 ## Enable / Disable context menu
-Method 1: To globally enable or disable context menu, you need to define an env variable ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```, it's true by default
+Method 1: To globally enable or disable context menu, you need to define an env variable called ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```.
 
-Method 2: You can also define a static variable called ```public static bool $contextMenuEnabled``` in the page and set the value to ```true``` or ```false```, it's true by default
+Method 2: You can also define a static variable called ```public static bool $contextMenuEnabled``` in the page and set the value to ```true``` or ```false```;
 
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -434,10 +403,9 @@ class ViewUser extends ViewRecord
 ```
 
 Method 3: define static method called ```isContextMenuEnabled``` in the page
+
 ```php
-use Filament\Resources\Pages\ViewRecord;
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
-use AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions;
+use AymanAlhattami\FilamentContextMenu\Traits\InteractsWithContextMenuActions;use Filament\Resources\Pages\ViewRecord;
 
 class ViewUser extends ViewRecord
 {
@@ -459,47 +427,19 @@ class ViewUser extends ViewRecord
 }
 ```
 
-## Note 
-* For action to have a nice style, use ```->link()``` method of the action, [action style](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
+### Note 
+For action to have a nice style, use ```->link()``` method of the action, [more information](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
  
 ```php
 public static function getContextMenuActions(): array
 {
     return [
         Action::make('Create user')
-            ->url(/**/)
+            ->url(CreateUser::getUrl())
             ->link()
         ];
 }
 ```
-
-* You can set an icon, visit [action style](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
-```php
-public static function getContextMenuActions(): array
-{
-    return [
-        Action::make('Create user')
-            ->url(/**/)
-            ->link()
-            ->icon('heroicon-o-user-plus')
-        ];
-}
-```
-
-* You can set a badge, visit [action style](https://filamentphp.com/docs/3.x/actions/trigger-button#adding-a-badge-to-the-corner-of-the-button)
-```php
-public static function getContextMenuActions(): array
-{
-    return [
-        Action::make('Create user')
-            ->url(/**/)
-            ->link()
-            ->icon('heroicon-o-user-plus')
-            ->badge(/**/)
-        ];
-}
-```
-
 
 ## Testing
 

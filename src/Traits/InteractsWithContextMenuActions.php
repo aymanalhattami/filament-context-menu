@@ -1,7 +1,8 @@
 <?php
 
-namespace AymanAlhattami\FilamentContextMenu;
+namespace AymanAlhattami\FilamentContextMenu\Traits;
 
+use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use InvalidArgumentException;
