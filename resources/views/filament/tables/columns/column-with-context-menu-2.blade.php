@@ -1,7 +1,9 @@
 <div x-data="{
         contextMenuOpen: false,
-
         contextMenuToggle: function(event) {
+            // Close any existing open context menus in other components
+            window.dispatchEvent(new CustomEvent('close-other-context-menus', { detail: this }));
+
             this.contextMenuOpen = true;
             event.preventDefault();
             this.$refs.contextmenu.classList.add('opacity-0');
@@ -13,7 +15,7 @@
             });
         },
         calculateContextMenuPosition (clickEvent) {
-            if(window.innerHeight < clickEvent.clientY + this.$refs.contextmenu.offsetHeight){
+             if(window.innerHeight < clickEvent.clientY + this.$refs.contextmenu.offsetHeight){
                 this.$refs.contextmenu.style.top = (window.innerHeight - this.$refs.contextmenu.offsetHeight) + 'px';
             } else {
                 this.$refs.contextmenu.style.top = clickEvent.clientY + 'px';
@@ -46,12 +48,14 @@
     }"
      x-init="
         window.addEventListener('resize', function(event) { contextMenuOpen = false; });
-    "
-     @contextmenu="contextMenuToggle(event)" class="relative z-50 w-full">
+        window.addEventListener('close-other-context-menus', function(event) {
+            if(event.detail !== this) this.contextMenuOpen = false;
+        });"
+     @contextmenu="contextMenuToggle(event)" class="relative w-full z-50 flex items-center">
 
-    <span class="cursor-default">
+    <div class="fi-ta-text-item-label text-sm leading-6 text-gray-950 dark:text-white  ">
         @include('filament-tables::columns.text-column')
-    </span>
+    </div>
 
     <template x-teleport="body">
         <div x-show="contextMenuOpen" @click.away="contextMenuOpen=false" x-ref="contextmenu" class="z-50 min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md w-64" x-cloak>
