@@ -4,12 +4,23 @@ namespace AymanAlhattami\FilamentContextMenu\Traits;
 
 use Filament\Support\Concerns\EvaluatesClosures;
 
-trait ColumnWithContextMenu
+trait ColumnHasContextMenu
 {
-    protected string $wrapperView = 'filament-context-menu::filament.tables.columns.column-with-context-menu';
+    protected string $wrapperView = 'filament-context-menu::filament.tables.columns.context-menu-column';
 
     protected ?string $mainView = '';
     protected \Closure|array $contextMenuActions = [];
+
+    /**
+     * @throws \Exception
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->mainView($this->getView())
+            ->view($this->getWrapperView());
+    }
 
     public function getContextMenuActions(): array
     {
