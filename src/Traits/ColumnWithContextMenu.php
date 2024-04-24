@@ -2,21 +2,20 @@
 
 namespace AymanAlhattami\FilamentContextMenu\Traits;
 
-use Filament\Support\Concerns\EvaluatesClosures;
-
 trait ColumnWithContextMenu
 {
     protected string $wrapperView = 'filament-context-menu::filament.tables.columns.column-with-context-menu';
 
     protected ?string $mainView = '';
-    protected \Closure|array $contextMenuActions = [];
+
+    protected \Closure | array $contextMenuActions = [];
 
     public function getContextMenuActions(): array
     {
         return $this->evaluate($this->contextMenuActions);
     }
 
-    public function contextMenuActions(array|\Closure $contextMenuActions): static
+    public function contextMenuActions(array | \Closure $contextMenuActions): static
     {
         $this->contextMenuActions = $contextMenuActions;
 

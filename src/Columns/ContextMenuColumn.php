@@ -2,7 +2,6 @@
 
 namespace AymanAlhattami\FilamentContextMenu\Columns;
 
-use Filament\Support\Concerns\EvaluatesClosures;
 use Filament\Tables\Columns\TextColumn;
 
 class ContextMenuColumn extends TextColumn
