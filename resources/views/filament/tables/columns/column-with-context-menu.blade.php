@@ -5,15 +5,30 @@
      class="relative z-50 w-full">
 
     <span class="cursor-default">
-        @include('filament-tables::columns.text-column')
+        @include($getMainView())
     </span>
 
     <template x-teleport="body">
-        <div x-show="contextMenuOpen" @click.away="contextMenuOpen = false" x-ref="contextmenu" class="z-50 min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md w-64" x-cloak>
-            <div @click="contextMenuOpen = false" class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8  data-[disabled]:opacity-50 data-[disabled]:pointer-events-none">
-                <span>Back</span>
-                <span class="ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600">⌘[</span>
-            </div>
+        <div x-show="contextMenuOpen" @click.away="contextMenuOpen = false" x-ref="contextmenu" class="z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md" x-cloak>
+            @foreach($getContextMenuActions() as $action)
+                @if($action->isVisible())
+                    @if($action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
+                        <x-filament-context-menu::divider />
+                    @endif
+
+                    @if($action instanceof \Filament\Actions\Action and !$action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
+                        @if($action->isVisible())
+                            <div @class([
+                            'context-menu-filament-action flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5',
+                            'mt-1' => !$loop->first
+                        ])>
+                                {{ $action }}
+                            </div>
+                        @endif
+                    @endif
+                @endif
+
+            @endforeach
         </div>
     </template>
 </div>
