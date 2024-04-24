@@ -2,7 +2,7 @@
      x-init="init()"
      @contextmenu="contextMenuToggle($event)"
      @close-other-menus.window="handleCloseOtherMenus($event)"
-     class="relative z-50 w-full">
+     class="relative w-full">
 
     <span class="cursor-default">
         @include($getMainView())
