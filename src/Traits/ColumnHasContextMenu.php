@@ -2,14 +2,13 @@
 
 namespace AymanAlhattami\FilamentContextMenu\Traits;
 
-use Filament\Support\Concerns\EvaluatesClosures;
-
 trait ColumnHasContextMenu
 {
     protected string $wrapperView = 'filament-context-menu::filament.tables.columns.context-menu-column';
 
     protected ?string $mainView = '';
-    protected \Closure|array $contextMenuActions = [];
+
+    protected \Closure | array $contextMenuActions = [];
 
     /**
      * @throws \Exception
@@ -27,7 +26,7 @@ trait ColumnHasContextMenu
         return $this->evaluate($this->contextMenuActions);
     }
 
-    public function contextMenuActions(array|\Closure $contextMenuActions): static
+    public function contextMenuActions(array | \Closure $contextMenuActions): static
     {
         $this->contextMenuActions = $contextMenuActions;
 
