@@ -9,7 +9,7 @@
     </span>
 
     <template x-teleport="body">
-        <div x-show="contextMenuOpen" @click.away="contextMenuOpen = false" x-ref="contextmenu" class="z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-sm fixed p-1 shadow-md" x-cloak>
+        <div x-show="contextMenuOpen" @click.away="contextMenuOpen = false" x-ref="contextmenu" class="z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10" x-cloak>
             @foreach($getContextMenuActions() as $action)
                 @if($action->isVisible())
                     @if($action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
@@ -41,9 +41,12 @@
             contextMenuToggle: function(event) {
                 event.preventDefault();
                 this.contextMenuOpen = true;
+                this.$refs.contextmenu.style.opacity = 0;
+
                 this.$dispatch('close-other-menus', { id: this.$el });
 
                 this.$nextTick(() => {
+                    this.$refs.contextmenu.style.opacity = 1;
                     this.calculateContextMenuPosition(event);
                 });
             },
