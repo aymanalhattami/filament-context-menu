@@ -7,7 +7,7 @@ use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use InvalidArgumentException;
 
-trait InteractsWithContextMenuActions
+trait PageHasContextMenu
 {
     use InteractsWithActions;
 
