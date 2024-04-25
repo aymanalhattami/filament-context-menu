@@ -6,6 +6,7 @@
         x-init="init()"
         @contextmenu="contextMenuToggle($event)"
         @close-other-menus.window="handleCloseOtherMenus($event)"
+        @close-children-context-menu.window="contextMenuOpen = false"
         class="relative w-full">
 
     <div>
@@ -48,6 +49,7 @@
                     this.$refs.contextmenu.style.opacity = 0;
 
                     this.$dispatch('close-other-menus', { id: this.$el });
+                    this.$dispatch('close-parent-context-menu', { id: this.$el });
 
                     this.$nextTick(() => {
                         this.$refs.contextmenu.style.opacity = 1;
@@ -80,6 +82,7 @@
 
                 init: function() {
                     window.addEventListener('resize', () => { this.contextMenuOpen = false; });
+                    // document.addEventListener('close-children-context-menu', () => { this.contextMenuOpen = false; });
                 }
             }
         }

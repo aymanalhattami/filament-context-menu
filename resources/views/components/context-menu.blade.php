@@ -26,10 +26,18 @@
                 var contextMenu = document.getElementById('contextMenu');
                 var contextMenuTrigger = document.getElementsByClassName('fi-main')[0];
 
+                document.addEventListener('close-parent-context-menu', function(event) {
+                    contextMenu.style.display = 'none'; // Show the context menu
+                    contextMenu.style.opacity = '0';
+                })
+
                 contextMenuTrigger.addEventListener('contextmenu', function (event) {
                     event.preventDefault();
                     contextMenu.style.display = 'block'; // Show the context menu
                     contextMenu.style.opacity = '0';
+
+                    let closeChildrenContextMenu = new Event('close-children-context-menu');
+                    dispatchEvent(closeChildrenContextMenu);
 
                     setTimeout(function () {
                         calculateContextMenuPosition(event);
