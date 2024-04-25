@@ -14,13 +14,13 @@
 
         <template x-teleport="body">
             <div x-show="contextMenuOpen" @click.away="contextMenuOpen = false" x-ref="contextmenu" class="z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10" x-cloak>
-                @foreach($getCachedContextMenuActions() as $action)
+                @foreach($getContextMenuActions() as $action)
                     @if($action->isVisible())
                         @if($action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
                             <x-filament-context-menu::divider />
                         @endif
 
-                        @if(($action instanceof \Filament\Actions\Action or $action instanceof Filament\Tables\Actions\Action) and !$action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
+                        @if($action instanceof Filament\Tables\Actions\Action and !$action instanceof \AymanAlhattami\FilamentContextMenu\ContextMenuDivider)
                             @if($action->isVisible())
                                 <div @class([
                             'context-menu-filament-action flex gap-x-4 select-none group justify-between rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none dark:hover:bg-white/5',
@@ -43,6 +43,7 @@
 
                 contextMenuToggle: function(event) {
                     event.preventDefault();
+                    event.stopPropagation();
                     this.contextMenuOpen = true;
                     this.$refs.contextmenu.style.opacity = 0;
 

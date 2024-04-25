@@ -13,7 +13,6 @@ trait ColumnHasContextMenu
     protected ?string $mainView = '';
 
     protected \Closure | array $contextMenuActions = [];
-    protected array $cachedContextMenuActions = [];
 
     /**
      * @throws \Exception
@@ -24,31 +23,6 @@ trait ColumnHasContextMenu
 
         $this->mainView($this->getView())
             ->view($this->getWrapperView());
-    }
-
-    public function bootedColumnHasContextMenu(): void
-    {
-        $this->cacheContextMenuActions();
-    }
-
-    protected function cacheContextMenuActions(): void
-    {
-        foreach ($this->getContextMenuActions() as $action) {
-
-            if (! $action instanceof Action and ! $action instanceof ContextMenuDivider) {
-                throw new InvalidArgumentException('context menu action must be an instance of ' . Action::class . '.');
-            }
-
-            if ($action instanceof Action or $action instanceof ContextMenuDivider) {
-                $this->cacheAction($action);
-                $this->cachedContextMenuActions[] = $action;
-            }
-        }
-    }
-
-    public function getCachedContextMenuActions(): array
-    {
-        return $this->cachedContextMenuActions;
     }
 
     public function getContextMenuActions(): array
