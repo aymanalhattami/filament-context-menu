@@ -20,7 +20,7 @@ trait PageHasContextMenu
         return static::$contextMenuEnabled and config('filament-context-menu.enabled', true);
     }
 
-    public function bootedInteractsWithContextMenuActions(): void
+    public function bootedPageHasContextMenu(): void
     {
         $this->cacheContextMenuActions();
     }
