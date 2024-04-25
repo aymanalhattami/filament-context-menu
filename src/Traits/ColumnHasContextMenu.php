@@ -2,10 +2,6 @@
 
 namespace AymanAlhattami\FilamentContextMenu\Traits;
 
-use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
-use Filament\Actions\Action;
-use InvalidArgumentException;
-
 trait ColumnHasContextMenu
 {
     protected string $wrapperView = 'filament-context-menu::filament.tables.columns.context-menu-column';
