@@ -1,4 +1,7 @@
-<div x-data="contextMenuComponent()"
+<div
+    {{--  wire:ignore is to fix the problem of the dropdown menu not showing when modal does not shown --}}
+    wire:ignore
+    x-data="contextMenuComponent()"
      x-init="init()"
      @contextmenu="contextMenuToggle($event)"
      @close-other-menus.window="handleCloseOtherMenus($event)"
