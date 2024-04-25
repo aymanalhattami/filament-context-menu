@@ -6,13 +6,14 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
 ---
-This package used to add context menu (right click menu) for resource pages and custom pages of [Filament Admin Panel](https://filamentphp.com/).
+This package used to add context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu actions.
-* Support dark and light mode.
-* Support left-to-right and right-to-left direction.
+* It supports dark and light mode.
+* It supports left-to-right and right-to-left direction.
 * You can set a divider between menu actions.
-* Supports resource pages and custom pages.
-* Three actions are available for usage:
+* It supports resource pages and custom pages.
+* You can set a context menu for table cells.
+* Three actions are available for usage with pages:
     * ```AymanAlhattami\FilamentContextMenu\RefreshAction``` to refresh the page.
     * ```AymanAlhattami\FilamentContextMenu\GoBackAction``` to go back to previous page.
     * ```AymanAlhattami\FilamentContextMenu\GoForward``` to go back to forward page.
@@ -27,7 +28,7 @@ You can install the package via composer:
 composer require aymanalhattami/filament-context-menu
 ```
 
-## Usage
+## Usage: resource pages and custom pages
 1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page you want to add context menu.
 2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
@@ -50,8 +51,6 @@ class ListUsers extends ListRecords
     // 
 }
 ```
-
-## More options
 
 ### Divider
 You can use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions
@@ -373,6 +372,66 @@ class ViewUser extends ViewRecord
     }
     
     // 
+}
+```
+
+## Usage: table cells
+There are a set of columns that support context menu
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuCheckboxColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuColorColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuIconColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuImageColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuSelectColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextInputColumn```
+* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuToggleColumn```
+
+```php
+use Filament\Tables\Table;
+use AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
+
+//
+public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                ContextMenuTextColumn::make('id')
+                    ->searchable()
+                    ->contextMenuActions(fn (Model $record) => [
+                        Action::make('View user')
+                            ->url(Pages\ViewUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-user'),
+                        Action::make('Edit user')
+                            ->url(Pages\EditUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-pencil'),
+                        ContextMenuDivider::make(),
+                        DeleteAction::make('test')
+                            ->record($record)
+                            ->link()
+                            ->icon('heroicon-o-trash')
+                    ]),
+                ContextMenuTextColumn::make('name')
+                    ->searchable()
+                    ->contextMenuActions(fn (Model $record) => [
+                        Action::make('View user')
+                            ->url(Pages\ViewUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-user'),
+                        Action::make('Edit user')
+                            ->url(Pages\EditUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-pencil'),
+                        ContextMenuDivider::make(),
+                        DeleteAction::make('test')
+                            ->record($record)
+                            ->link()
+                            ->icon('heroicon-o-trash')
+                    ])
+                    ,
+                ,
+            ])
 }
 ```
 
