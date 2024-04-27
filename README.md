@@ -393,59 +393,7 @@ class ViewUser extends ViewRecord
 }
 ```
 
-## Usage 2: table cells
-To add context menu to table cell, you can use the following columns: 
-```php 
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuCheckboxColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuSelectColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuColorColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuIconColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuImageColumn; 
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextInputColumn;
- AymanAlhattami\FilamentContextMenu\Columns\ContextMenuToggleColumn;
-```
-
-```php
-use Filament\Tables\Table;
-use Filament\Tables\Actions\Action;
-use AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
-use App\Filament\Resources\UserResource\Pages\{ ViewUser, EditUser };
-
-//
-public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                ContextMenuTextColumn::make('id')
-                    ->searchable()
-                    ->contextMenuActions(fn (Model $record) => [
-                        Action::make('View user')
-                            ->url(ViewUser::getUrl(['record' => $record]))
-                            ->link()
-                            ->icon('heroicon-o-user'),
-                    ]),
-                ContextMenuTextColumn::make('name')
-                    ->searchable()
-                    ->contextMenuActions(fn (Model $record) => [
-                        Action::make('View user')
-                            ->url(Pages\ViewUser::getUrl(['record' => $record]))
-                            ->link()
-                            ->icon('heroicon-o-user'),
-                        Action::make('Edit user')
-                            ->url(Pages\EditUser::getUrl(['record' => $record]))
-                            ->link()
-                            ->icon('heroicon-o-pencil'),
-                    ])
-                    ,
-                ,
-            ])
-}
-```
-
-Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions.
-
-## Enable / Disable context menu
+### Enable / Disable context menu in resource pages and custom pages
 Method 1: To globally enable or disable context menu, you need to define an env variable called ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```.
 
 Method 2: You can also define a static variable called ```public static bool $contextMenuEnabled``` in the page and set the value to ```true``` or ```false```;
@@ -496,7 +444,78 @@ class ViewUser extends ViewRecord
 }
 ```
 
-### Note 
+## Usage 2: table cells
+To add context menu to table cell, you can use the following columns: 
+```php 
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuCheckboxColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuSelectColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuColorColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuIconColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuImageColumn; 
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextInputColumn;
+ AymanAlhattami\FilamentContextMenu\Columns\ContextMenuToggleColumn;
+```
+
+```php
+use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
+use AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
+use App\Filament\Resources\UserResource\Pages\{ ViewUser, EditUser };
+
+//
+public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                ContextMenuTextColumn::make('id')
+                    ->searchable()
+                    ->contextMenuActions(fn (Model $record) => [
+                        Action::make('View user')
+                            ->url(ViewUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-user'),
+                    ]),
+                ContextMenuTextColumn::make('name')
+                    ->searchable()
+                    ->contextMenuActions(fn (Model $record) => [
+                        Action::make('View user')
+                            ->url(Pages\ViewUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-user'),
+                        Action::make('Edit user')
+                            ->url(Pages\EditUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-pencil'),
+                    ])
+                    ,
+                ,
+            ])
+}
+```
+Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions.
+
+### enable / disable table cell context menu
+Use ```->contextMenuEnabled()``` method to enable/disable context menu for table cell.
+
+```php
+//
+public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                ContextMenuTextColumn::make('id')
+                    ->contextMenuEnabled(false)
+                    ->contextMenuActions(fn (Model $record) => [
+                        Action::make('View user')
+                            ->url(ViewUser::getUrl(['record' => $record]))
+                            ->link()
+                            ->icon('heroicon-o-user'),
+                    ]),
+//
+```
+
+## Note 
 For action to have a nice style, use ```->link()``` method of the action, [more information](https://filamentphp.com/docs/3.x/actions/trigger-button#choosing-a-trigger-style)
  
 ```php
