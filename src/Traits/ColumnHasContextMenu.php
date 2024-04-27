@@ -9,6 +9,7 @@ trait ColumnHasContextMenu
     protected string $wrapperView = 'filament-context-menu::filament.tables.columns.context-menu-column';
 
     protected ?string $mainView = '';
+
     protected Closure | bool $contextMenuEnabled = true;
 
     protected Closure | array $contextMenuActions = [];
@@ -48,7 +49,6 @@ trait ColumnHasContextMenu
             config('filament-context-menu.enabled', true) and
             count($this->getContextMenuActions());
     }
-
 
     public function wrapperView($view): static
     {
