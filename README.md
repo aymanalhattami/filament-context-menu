@@ -377,19 +377,14 @@ class ViewUser extends ViewRecord
 ```
 
 ## Usage: table cells
-There are a set of columns that support context menu
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuCheckboxColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuColorColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuIconColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuImageColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuSelectColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextInputColumn```
-* ```AymanAlhattami\FilamentContextMenu\Columns\ContextMenuToggleColumn```
+To add context menu to table cell, you can use the following
+* ```AymanAlhattami\FilamentContextMenu\Columns\{ContextMenuTextColumn, ContextMenuCheckboxColumn, ContextMenuSelectColumn, ContextMenuColorColumn, ContextMenuIconColumn, ContextMenuImageColumn, ContextMenuTextInputColumn, ContextMenuToggleColumn}```
 
 ```php
 use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
 use AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
+use App\Filament\Resources\UserResource\Pages\{ ViewUser, EditUser };
 
 //
 public static function table(Table $table): Table
@@ -400,18 +395,9 @@ public static function table(Table $table): Table
                     ->searchable()
                     ->contextMenuActions(fn (Model $record) => [
                         Action::make('View user')
-                            ->url(Pages\ViewUser::getUrl(['record' => $record]))
+                            ->url(ViewUser::getUrl(['record' => $record]))
                             ->link()
                             ->icon('heroicon-o-user'),
-                        Action::make('Edit user')
-                            ->url(Pages\EditUser::getUrl(['record' => $record]))
-                            ->link()
-                            ->icon('heroicon-o-pencil'),
-                        ContextMenuDivider::make(),
-                        DeleteAction::make('test')
-                            ->record($record)
-                            ->link()
-                            ->icon('heroicon-o-trash')
                     ]),
                 ContextMenuTextColumn::make('name')
                     ->searchable()
@@ -424,11 +410,6 @@ public static function table(Table $table): Table
                             ->url(Pages\EditUser::getUrl(['record' => $record]))
                             ->link()
                             ->icon('heroicon-o-pencil'),
-                        ContextMenuDivider::make(),
-                        DeleteAction::make('test')
-                            ->record($record)
-                            ->link()
-                            ->icon('heroicon-o-trash')
                     ])
                     ,
                 ,
