@@ -2,17 +2,17 @@
 
 namespace AymanAlhattami\FilamentContextMenu\Traits;
 
+use Closure;
+
 trait ColumnHasContextMenu
 {
     protected string $wrapperView = 'filament-context-menu::filament.tables.columns.context-menu-column';
 
     protected ?string $mainView = '';
+    protected Closure | bool $contextMenuEnabled = true;
 
-    protected \Closure | array $contextMenuActions = [];
+    protected Closure | array $contextMenuActions = [];
 
-    /**
-     * @throws \Exception
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,12 +26,29 @@ trait ColumnHasContextMenu
         return $this->evaluate($this->contextMenuActions);
     }
 
-    public function contextMenuActions(array | \Closure $contextMenuActions): static
+    public function contextMenuActions(array | Closure $contextMenuActions): static
     {
         $this->contextMenuActions = $contextMenuActions;
 
         return $this;
     }
+
+    public function enableContextMenu(bool | Closure $contextMenuEnabled = true): static
+    {
+        $this->contextMenuEnabled = $contextMenuEnabled;
+
+        return $this;
+    }
+
+    public function idContextMenuEnabled(): bool
+    {
+        $isContextMenuEnabled = $this->evaluate($this->contextMenuActions);
+
+        return $isContextMenuEnabled and
+            config('filament-context-menu.enabled', true) and
+            count($this->getContextMenuActions());
+    }
+
 
     public function wrapperView($view): static
     {

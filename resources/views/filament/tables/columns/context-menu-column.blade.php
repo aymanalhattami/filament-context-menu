@@ -1,4 +1,4 @@
-@if(count($getContextMenuActions()))
+@if($isContextMenuEnabled())
     <div
         {{--  wire:ignore is to fix the problem of the dropdown menu not showing when modal does not shown --}}
         wire:ignore
