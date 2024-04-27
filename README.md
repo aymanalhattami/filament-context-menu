@@ -13,10 +13,10 @@ This package used to add context menu (right click menu) for resource pages, cus
 * You can set a divider between menu actions.
 * It supports resource pages and custom pages.
 * You can set a context menu for table cells.
-* Three actions are available for usage with pages:
-    * ```AymanAlhattami\FilamentContextMenu\RefreshAction``` to refresh the page.
-    * ```AymanAlhattami\FilamentContextMenu\GoBackAction``` to go back to previous page.
-    * ```AymanAlhattami\FilamentContextMenu\GoForward``` to go back to forward page.
+* Three actions are available for usage in page context menu:
+    * ```AymanAlhattami\FilamentContextMenu\Actions\RefreshAction``` to refresh the page.
+    * ```AymanAlhattami\FilamentContextMenu\Actions\GoBackAction``` to go back to previous page.
+    * ```AymanAlhattami\FilamentContextMenu\Actions\GoForward``` to go back to forward page.
 
 [Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
 
@@ -28,13 +28,15 @@ You can install the package via composer:
 composer require aymanalhattami/filament-context-menu
 ```
 
-## Usage: resource pages and custom pages
-1. Add the trait ```AymanAlhattami\FilamentContextMenu\InteractsWithContextMenuActions``` to the page you want to add context menu.
+## Usage 1: resource pages and custom pages
+1. Add the trait ```AymanAlhattami\FilamentContextMenu\PageHasContextMenu``` to the page you want to add context menu.
 2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
 ```php
 use App\Filament\Resources\UserResource\Pages\CreateUser;
-use AymanAlhattami\FilamentContextMenu\Traits\PageHasContextMenu;use Filament\Actions\Action;use Filament\Resources\Pages\ListRecords;
+use AymanAlhattami\FilamentContextMenu\Traits\PageHasContextMenu;
+use Filament\Actions\Action;
+use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
