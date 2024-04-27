@@ -13,12 +13,7 @@ trait PageHasContextMenu
 
     protected array $cachedContextMenuActions = [];
 
-    public static bool $contextMenuEnabled = true;
-
-    public static function isContextMenuEnabled(): bool
-    {
-        return static::$contextMenuEnabled and config('filament-context-menu.enabled', true);
-    }
+    protected static bool $contextMenuEnabled = true;
 
     public function bootedPageHasContextMenu(): void
     {
@@ -48,5 +43,12 @@ trait PageHasContextMenu
     public function getContextMenuActions(): array
     {
         return [];
+    }
+
+    public function isContextMenuEnabled(): bool
+    {
+        return static::$contextMenuEnabled and
+            config('filament-context-menu.enabled', true)
+            and count($this->getContextMenuActions());
     }
 }

@@ -1,5 +1,5 @@
 @if(method_exists(static::class, 'getContextMenuActions'))
-    @if(count(static::getContextMenuActions()) and static::isContextMenuEnabled())
+    @if(static::isContextMenuEnabled())
         <div id="contextMenu"
              class="flex z-50 min-w-48 max-w-2xl text-neutral-800 rounded-md ring-1 ring-gray-950/5 transition bg-white text-sm fixed p-2 shadow-md dark:text-gray-200 dark:bg-gray-900 dark:ring-white/10"
              style="display: none;">
