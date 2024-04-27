@@ -40,9 +40,9 @@ trait ColumnHasContextMenu
         return $this;
     }
 
-    public function idContextMenuEnabled(): bool
+    public function isContextMenuEnabled(): bool
     {
-        $isContextMenuEnabled = $this->evaluate($this->contextMenuActions);
+        $isContextMenuEnabled = $this->evaluate($this->contextMenuEnabled);
 
         return $isContextMenuEnabled and
             config('filament-context-menu.enabled', true) and
