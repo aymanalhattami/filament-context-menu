@@ -9,8 +9,6 @@ use InvalidArgumentException;
 
 trait PageHasContextMenu
 {
-    use InteractsWithActions;
-
     protected array $cachedContextMenuActions = [];
 
     protected static bool $contextMenuEnabled = true;
@@ -29,8 +27,7 @@ trait PageHasContextMenu
             }
 
             if ($action instanceof Action or $action instanceof ContextMenuDivider) {
-                $this->cacheAction($action);
-                $this->cachedContextMenuActions[] = $action;
+                $this->cachedContextMenuActions[] = $this->cacheAction($action);
             }
         }
     }
