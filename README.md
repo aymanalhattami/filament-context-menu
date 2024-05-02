@@ -8,30 +8,30 @@
 [filament-context-menu.webm](https://github.com/aymanalhattami/filament-context-menu/assets/34315778/e26be373-d805-4a9d-b773-5b2398850fd4)
 
 ---
-This package used to add context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
+This package is used to add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu actions.
-* It supports dark and light mode.
+* It supports dark and light modes.
 * It supports left-to-right and right-to-left direction.
 * You can set a divider between menu actions.
 * It supports resource pages and custom pages.
 * You can set a context menu for table cells.
-* Three actions are available for usage in page context menu:
+* Three actions are available for usage in the page context menu:
     * ```AymanAlhattami\FilamentContextMenu\Actions\RefreshAction``` to refresh the page.
-    * ```AymanAlhattami\FilamentContextMenu\Actions\GoBackAction``` to go back to previous page.
-    * ```AymanAlhattami\FilamentContextMenu\Actions\GoForward``` to go back to forward page.
+    * ```AymanAlhattami\FilamentContextMenu\Actions\GoBackAction``` to go back to the previous page.
+    * ```AymanAlhattami\FilamentContextMenu\Actions\GoForward``` to go back to the forward page.
 
 [Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require aymanalhattami/filament-context-menu
 ```
 
 ## Usage 1: resource pages and custom pages
-1. Add the trait ```AymanAlhattami\FilamentContextMenu\PageHasContextMenu``` to the page you want to add context menu.
+1. Add the trait ```AymanAlhattami\FilamentContextMenu\PageHasContextMenu``` to the page you want to add the context menu.
 2. Then, define a ```getContextMenuActions``` method inside the page, the method should return an array of [Filament Actions](https://filamentphp.com/docs/3.x/actions/installation)
 
 ```php
@@ -396,7 +396,7 @@ class ViewUser extends ViewRecord
 ```
 
 ### Enable / Disable context menu in resource pages and custom pages
-Method 1: To globally enable or disable context menu, you need to define an env variable called ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```.
+Method 1: To globally enable or disable the context menu, you need to define an env variable called ```CONTEXT_MENU_ENABLED```  and to set the value to ```true``` or ```false```.
 
 Method 2: You can also define a static variable called ```public static bool $contextMenuEnabled``` in the page and set the value to ```true``` or ```false```;
 
@@ -421,7 +421,7 @@ class ViewUser extends ViewRecord
 }
 ```
 
-Method 3: define static method called ```isContextMenuEnabled``` in the page
+Method 3: define a static method called ```isContextMenuEnabled``` in the page
 
 ```php
 use AymanAlhattami\FilamentContextMenu\Traits\PageHasContextMenu;use Filament\Resources\Pages\ViewRecord;
@@ -447,7 +447,7 @@ class ViewUser extends ViewRecord
 ```
 
 ## Usage 2: table cells
-To add context menu to table cell, you can use the following columns: 
+To add a context menu to the table cell, you can use the following columns: 
 ```php 
  AymanAlhattami\FilamentContextMenu\Columns\ContextMenuTextColumn;
  AymanAlhattami\FilamentContextMenu\Columns\ContextMenuCheckboxColumn;
@@ -495,10 +495,10 @@ public static function table(Table $table): Table
             ])
 }
 ```
-Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set divider between menu actions.
+Use ```AymanAlhattami\FilamentContextMenu\ContextMenuDivider``` to set a divider between menu actions.
 
 ### enable / disable table cell context menu
-Use ```->contextMenuEnabled()``` method to enable/disable context menu for table cell.
+Use ```->contextMenuEnabled()``` method to enable/disable the context menu for the table cell.
 
 ```php
 //
