@@ -22,7 +22,7 @@
         </div>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('livewire:navigated', function () {
                 var contextMenu = document.getElementById('contextMenu');
                 var contextMenuTrigger = document.getElementsByClassName('fi-main')[0];
 
