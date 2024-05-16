@@ -6,7 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
 <video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/aymanalhattami/filament-context-menu/main/docs/filament-context-menu.webm" type="video/webm">
+  <source src="https://www.youtube.com/watch?v=ciTH-u5sluw" type="video/webm">
 </video>
 
 ---
