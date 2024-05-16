@@ -5,10 +5,6 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-context-menu/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/aymanalhattami/filament-context-menu/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
-<video width="320" height="240" controls>
-  <source src="https://www.youtube.com/watch?v=ciTH-u5sluw" type="video/webm">
-</video>
-
 ---
 This package is used to add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu actions.
@@ -22,7 +18,7 @@ This package is used to add a context menu (right click menu) for resource pages
     * ```AymanAlhattami\FilamentContextMenu\Actions\GoBackAction``` to go back to the previous page.
     * ```AymanAlhattami\FilamentContextMenu\Actions\GoForward``` to go back to the forward page.
 
-[Demo project](https://github.com/aymanalhattami/filament-context-menu-project)
+[Demo project](https://github.com/aymanalhattami/filament-context-menu-project) | [Youtube video](https://www.youtube.com/watch?v=ciTH-u5sluw) | [Laravel Daily (Povilas Korop) Video](https://www.youtube.com/watch?v=ZqJ96GCtfBQ)
 
 ## Installation
 
