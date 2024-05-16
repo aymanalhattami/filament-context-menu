@@ -9,6 +9,10 @@
   <source src="https://raw.githubusercontent.com/aymanalhattami/filament-context-menu/main/docs/filament-context-menu.webm" type="video/webm">
 </video>
 
+<div class='hidden'>
+    [filament-context-menu.webm](https://github.com/aymanalhattami/filament-context-menu/assets/34315778/e26be373-d805-4a9d-b773-5b2398850fd4)
+</div>
+
 ---
 This package is used to add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu actions.
