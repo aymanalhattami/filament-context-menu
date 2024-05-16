@@ -5,7 +5,9 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/aymanalhattami/filament-context-menu/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/aymanalhattami/filament-context-menu/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
-[filament-context-menu.webm](https://github.com/aymanalhattami/filament-context-menu/assets/34315778/e26be373-d805-4a9d-b773-5b2398850fd4)
+<video width="320" height="240" controls>
+  <source src="https://raw.githubusercontent.com/aymanalhattami/filament-context-menu/main/docs/filament-context-menu.webm" type="video/webm">
+</video>
 
 ---
 This package is used to add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
