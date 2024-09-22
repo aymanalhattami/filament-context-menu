@@ -552,7 +552,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 - [aymanalhattami](https://github.com/aymanalhattami)
 
-[//]: # (- [All Contributors]&#40;../../contributors&#41;)
+- [All Contributors](../../contributors)
 
 ## License
 
