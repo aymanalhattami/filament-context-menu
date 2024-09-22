@@ -543,10 +543,10 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-[//]: # (## Security Vulnerabilities)
+## Security Vulnerabilities
 
-[//]: # ()
-[//]: # (Please review [our security policy]&#40;../../security/policy&#41; on how to report security vulnerabilities.)
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
