@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `:package_name` will be documented in this file.
+All notable changes to `filament-context-menu` will be documented in this file.
 
 ## 1.0.2 - 2024-05-17
 
@@ -29,6 +29,6 @@ All notable changes to `:package_name` will be documented in this file.
 
 **Full Changelog**: https://github.com/aymanalhattami/filament-context-menu/compare/1.0.0...1.0.0
 
-## 1.0.0 - 202X-XX-XX
+## 1.0.0 - 2024-04-27
 
 - initial release
