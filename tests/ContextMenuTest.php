@@ -1,8 +1,8 @@
 <?php
 
-use AymanAlhattami\FilamentContextMenu\ContextMenu;
 use AymanAlhattami\FilamentContextMenu\Actions\GoBackAction;
 use AymanAlhattami\FilamentContextMenu\Actions\GoForwardAction;
+use AymanAlhattami\FilamentContextMenu\ContextMenu;
 
 test('ContextMenu is set up correctly', function () {
     // Create a ContextMenu instance

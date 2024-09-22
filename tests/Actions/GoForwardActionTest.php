@@ -15,4 +15,3 @@ test('GoForwardAction is set up correctly', function () {
             'x-on:click' => 'window.history.forward()',
         ]);
 });
-
