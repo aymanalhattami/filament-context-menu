@@ -2,6 +2,16 @@
 
 All notable changes to `filament-context-menu` will be documented in this file.
 
+## 1.0.3 - 2024-09-22
+
+### What's Changed
+
+* test
+* chore(deps): bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/aymanalhattami/filament-context-menu/pull/10
+* chore(deps-dev): bump braces from 3.0.2 to 3.0.3 by @dependabot in https://github.com/aymanalhattami/filament-context-menu/pull/11
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-context-menu/compare/1.0.2...1.0.3
+
 ## 1.0.2 - 2024-05-17
 
 ### What's Changed
