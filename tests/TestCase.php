@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace AymanAlhattami\FilamentContextMenu\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use VendorName\Skeleton\FilamentContextMenuServiceProvider;
+use AymanAlhattami\FilamentContextMenu\FilamentContextMenuServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -25,7 +25,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'AymanAlhattami\\FilamentContextMenu\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
