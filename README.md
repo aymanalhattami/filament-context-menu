@@ -6,7 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-context-menu.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-context-menu)
 
 ---
-This package is used to add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
+Add a context menu (right click menu) for resource pages, custom pages and table cells of [Filament Admin Panel](https://filamentphp.com/).
 * It uses [Filament Actions](https://filamentphp.com/docs/3.x/actions/overview) to set menu actions.
 * It supports dark and light modes.
 * It supports left-to-right and right-to-left direction.
