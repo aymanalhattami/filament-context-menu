@@ -1,12 +1,26 @@
 @if($isContextMenuEnabled())
+    {{-- ============================================================================ --}}
+    {{-- MOBILE TOUCH SUPPORT ADDITION --}}
+    {{-- ============================================================================ --}}
+    {{-- The following CSS classes and touch event listeners were added to support --}}
+    {{-- mobile devices (Android/iOS). The CSS prevents the default browser context --}}
+    {{-- menu from appearing on long-press, and the touch event listeners detect --}}
+    {{-- long-press gestures to trigger the custom context menu. --}}
+    {{-- ============================================================================ --}}
     <div
         {{--  wire:ignore is to fix the problem of the dropdown menu not showing when modal does not shown --}}
         wire:ignore
         x-data="contextMenuComponent()"
         x-init="init()"
         @contextmenu="contextMenuToggle($event)"
+        {{-- Touch event listeners for mobile long-press support --}}
+        @touchstart="handleTouchStart($event)"
+        @touchmove="handleTouchMove($event)"
+        @touchend="handleTouchEnd($event)"
         @close-other-menus.window="handleCloseOtherMenus($event)"
         @close-children-context-menu.window="contextMenuOpen = false"
+        {{-- CSS to prevent default mobile context menu on long-press --}}
+        style="-webkit-touch-callout: none; -webkit-user-select: none; user-select: none;"
         class="relative w-full">
 
         <div>
