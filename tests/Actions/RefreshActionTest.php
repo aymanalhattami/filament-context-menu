@@ -7,11 +7,8 @@ test('RefreshAction is set up correctly', function () {
 
     expect($action->getName())->toBe('refresh')
         ->and($action->getLabel())->toBe('Refresh')
-        ->and($action->getColor())->toBe('gray')
+        ->and($action->getColor())->toBeNull()
         ->and($action->getIcon())->toBe('heroicon-o-arrow-path')
-        ->and($action->isLink())->toBeTrue()
-        ->and($action->getExtraAttributes())->toMatchArray([
-            'x-data' => '',
-            'x-on:click' => 'window.location.reload()',
-        ]);
+        ->and($action->isLink())->toBeFalse()
+        ->and($action->getExtraAttributes())->toBeEmpty();
 });
