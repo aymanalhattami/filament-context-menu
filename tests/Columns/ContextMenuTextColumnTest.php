@@ -9,12 +9,12 @@ test('ColumnHasContextMenu is set up correctly', function () {
     // Create a column instance using the ColumnHasContextMenu trait
     $column = ContextMenuTextColumn::make('name');
 
-    // Test default wrapper view
-    expect($column->getWrapperView())->toBe('filament-context-menu::filament.tables.columns.context-menu-column');
+    // Test default view
+    expect($column->getView())->toBe('filament-context-menu::filament.tables.columns.context-menu-column');
 
-    // Test setting and getting the main view
-    $column->mainView('my-main-view');
-    expect($column->getMainView())->toBe('my-main-view');
+    // Test setting and getting the view
+    $column->view('my-main-view');
+    expect($column->getView())->toBe('my-main-view');
 
     // Test context menu actions
     $column->contextMenuActions([GoBackAction::make(), GoForwardAction::make()]);
@@ -31,7 +31,7 @@ test('ColumnHasContextMenu is set up correctly', function () {
     Config::set('filament-context-menu.enabled', true); // Ensure config is enabled
     expect($column->isContextMenuEnabled())->toBeTrue();
 
-    // Test wrapper view customization
-    $column->wrapperView('custom-wrapper-view');
-    expect($column->getWrapperView())->toBe('custom-wrapper-view');
+    // Test view customization
+    $column->view('custom-view');
+    expect($column->getView())->toBe('custom-view');
 });

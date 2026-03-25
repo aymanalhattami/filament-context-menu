@@ -3,6 +3,7 @@
 namespace AymanAlhattami\FilamentContextMenu;
 
 use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
@@ -46,6 +47,7 @@ class FilamentContextMenuServiceProvider extends PackageServiceProvider
     {
         return [
             Css::make('filament-context-menu-styles', __DIR__ . '/../resources/dist/app.css'),
+            Js::make('filament-context-menu-scripts', __DIR__ . '/../resources/dist/app.js'),
         ];
     }
 }

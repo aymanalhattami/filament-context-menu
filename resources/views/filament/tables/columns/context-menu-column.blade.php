@@ -1,12 +1,26 @@
 @if($isContextMenuEnabled())
+    {{-- ============================================================================ --}}
+    {{-- MOBILE TOUCH SUPPORT ADDITION --}}
+    {{-- ============================================================================ --}}
+    {{-- The following CSS classes and touch event listeners were added to support --}}
+    {{-- mobile devices (Android/iOS). The CSS prevents the default browser context --}}
+    {{-- menu from appearing on long-press, and the touch event listeners detect --}}
+    {{-- long-press gestures to trigger the custom context menu. --}}
+    {{-- ============================================================================ --}}
     <div
         {{--  wire:ignore is to fix the problem of the dropdown menu not showing when modal does not shown --}}
         wire:ignore
         x-data="contextMenuComponent()"
         x-init="init()"
         @contextmenu="contextMenuToggle($event)"
+        {{-- Touch event listeners for mobile long-press support --}}
+        @touchstart="handleTouchStart($event)"
+        @touchmove="handleTouchMove($event)"
+        @touchend="handleTouchEnd($event)"
         @close-other-menus.window="handleCloseOtherMenus($event)"
         @close-children-context-menu.window="contextMenuOpen = false"
+        {{-- CSS to prevent default mobile context menu on long-press --}}
+        style="-webkit-touch-callout: none; -webkit-user-select: none; user-select: none;"
         class="relative w-full">
 
         <div>
@@ -38,58 +52,6 @@
             </div>
         </template>
     </div>
-
-    <script>
-        function contextMenuComponent() {
-            return {
-                contextMenuOpen: false,
-
-                contextMenuToggle: function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    this.contextMenuOpen = true;
-                    this.$refs.contextmenu.style.opacity = 0;
-
-                    this.$dispatch('close-other-menus', { id: this.$el });
-                    this.$dispatch('close-parent-context-menu', { id: this.$el });
-
-                    this.$nextTick(() => {
-                        this.$refs.contextmenu.style.opacity = 1;
-                        this.calculateContextMenuPosition(event);
-                    });
-                },
-
-                calculateContextMenuPosition: function(clickEvent) {
-                    const menu = this.$refs.contextmenu;
-                    const menuHeight = menu.offsetHeight;
-                    const menuWidth = menu.offsetWidth;
-
-                    const top = clickEvent.clientY + menuHeight > window.innerHeight ?
-                        window.innerHeight - menuHeight :
-                        clickEvent.clientY;
-
-                    const left = clickEvent.clientX + menuWidth > window.innerWidth ?
-                        clickEvent.clientX - menuWidth :
-                        clickEvent.clientX;
-
-                    menu.style.top = `${top}px`;
-                    menu.style.left = `${left}px`;
-                },
-
-                handleCloseOtherMenus: function(event) {
-                    if (event.detail.id !== this.$el) {
-                        this.contextMenuOpen = false;
-                    }
-                },
-
-                init: function() {
-                    window.addEventListener('resize', () => {
-                        this.contextMenuOpen = false;
-                    });
-                }
-            }
-        }
-    </script>
 
 @else
     <div>
