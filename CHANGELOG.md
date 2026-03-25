@@ -2,6 +2,19 @@
 
 All notable changes to `filament-context-menu` will be documented in this file.
 
+## 3.0.0 - 2026-03-25
+
+### What's Changed
+
+* chore(deps): bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/aymanalhattami/filament-context-menu/pull/27
+* V5 upgrade by @eugenefvdm in https://github.com/aymanalhattami/filament-context-menu/pull/26
+
+### New Contributors
+
+* @eugenefvdm made their first contribution in https://github.com/aymanalhattami/filament-context-menu/pull/26
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-context-menu/compare/2.0.0...3.0.0
+
 ## 2.0.0 - 2026-01-23
 
 ### What's Changed
