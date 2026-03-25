@@ -22,6 +22,8 @@ Add a context menu (right click menu) for resource pages, custom pages and table
 
 ## Installation
 
+Version 1 for Filament version 3 | Version 2 for Filament version 4 | Version 3 for Filament version 5
+
 You can install the package via Composer:
 
 ```bash
