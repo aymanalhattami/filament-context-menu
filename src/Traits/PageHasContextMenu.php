@@ -6,6 +6,7 @@ use AymanAlhattami\FilamentContextMenu\ContextMenuDivider;
 use Filament\Actions\Action;
 use InvalidArgumentException;
 
+/** @phpstan-ignore-next-line  */
 trait PageHasContextMenu
 {
     protected array $cachedContextMenuActions = [];
