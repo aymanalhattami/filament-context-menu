@@ -2,6 +2,20 @@
 
 All notable changes to `filament-context-menu` will be documented in this file.
 
+## 3.0.1 - 2026-05-25
+
+### What's Changed
+
+* chore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-context-menu/pull/28
+* chore(deps): bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-context-menu/pull/29
+* Update installation links and PHP version constraints by @aymanalhattami in https://github.com/aymanalhattami/filament-context-menu/pull/30
+
+### New Contributors
+
+* @aymanalhattami made their first contribution in https://github.com/aymanalhattami/filament-context-menu/pull/30
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-context-menu/compare/3.0.0...3.0.1
+
 ## 3.0.0 - 2026-03-25
 
 ### What's Changed
