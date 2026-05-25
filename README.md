@@ -20,6 +20,15 @@ Add a context menu (right click menu) for resource pages, custom pages and table
 
 [Demo project](https://github.com/aymanalhattami/filament-context-menu-project) | [Youtube video](https://www.youtube.com/watch?v=ciTH-u5sluw) | [Laravel Daily (Povilas Korop) Video](https://www.youtube.com/watch?v=ZqJ96GCtfBQ)
 
+
+**Note:**
+
+> For [Filament 5.x](https://filamentphp.com/docs/introduction/installation)
+
+> For [Filament 4.x](https://filamentphp.com/docs/4.x/admin/installation)
+
+> For [Filament 3.x](https://filamentphp.com/docs/3.x/admin/installation)
+
 ## Installation
 
 Version 1 for Filament version 3 | Version 2 for Filament version 4 | Version 3 for Filament version 5
